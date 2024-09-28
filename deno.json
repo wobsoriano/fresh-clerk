@@ -5,7 +5,7 @@
   "exports": {
     ".": "./mod.ts",
     "./plugin": "./mod.ts",
-    "./islands": "./islands/",
+    "./islands": "./islands",
     "./hooks": "./hooks/index.ts",
     "./server": "./server/index.ts"
   },
