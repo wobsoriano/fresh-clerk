@@ -2,14 +2,14 @@ import { FreshContext } from '$fresh/server.ts';
 import { AuthObject } from '@clerk/backend';
 import { clerkClient } from './clerkClient.ts';
 import * as constants from './constants.ts';
-import {
-  AuthenticateRequestOptions,
-  AuthStatus,
-} from '@clerk/backend/internal';
 
 interface State {
   auth: AuthObject | null;
 }
+
+export type AuthenticateRequestOptions = Parameters<
+  typeof clerkClient.authenticateRequest
+>[1];
 
 export function clerkMiddleware(options: AuthenticateRequestOptions) {
   return async (req: Request, ctx: FreshContext<State>) => {
@@ -19,12 +19,12 @@ export function clerkMiddleware(options: AuthenticateRequestOptions) {
       publishableKey: options?.publishableKey ?? constants.PUBLISHABLE_KEY,
     });
 
-    const locationHeader = requestState.headers.get(constants.Headers.Location);
+    const locationHeader = requestState.headers.get('location');
     if (locationHeader) {
       return new Response(null, { status: 307, headers: requestState.headers });
     }
 
-    if (requestState.status === AuthStatus.Handshake) {
+    if (requestState.status === 'handshake') {
       throw new Error('[fresh-clerk] Handshake status without redirect');
     }
 
