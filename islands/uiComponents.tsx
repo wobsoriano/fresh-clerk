@@ -38,7 +38,9 @@ export const Portal = <T extends Record<string, any>>(
     }
 
     return () => {
-      clerk.value?.[`unmount${props.component}`](el.current);
+      if (clerk.value && loaded.value) {
+        clerk.value[`unmount${props.component}`](el.current);
+      }
     };
   });
 
