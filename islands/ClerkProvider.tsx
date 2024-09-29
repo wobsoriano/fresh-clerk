@@ -17,7 +17,7 @@ import {
   useSignalEffect,
 } from '@preact/signals';
 import { createContext } from 'preact';
-import { BrowserClerk, HeadlessBrowserClerk } from 'src/utils/types.ts';
+import { BrowserClerk, HeadlessBrowserClerk } from '../utils/types.ts';
 import { ComponentChildren } from 'preact';
 import { LoadClerkJsScriptOptions } from '@clerk/shared';
 

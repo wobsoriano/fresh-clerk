@@ -1,5 +1,5 @@
 import { useContext } from 'preact/hooks';
-import { ClerkContext } from 'src/islands/ClerkProvider.tsx';
+import { ClerkContext } from '../islands/ClerkProvider.tsx';
 import { ComponentChildren } from 'preact';
 
 interface SignedIn {

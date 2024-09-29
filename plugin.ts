@@ -1,6 +1,6 @@
 import { Plugin } from '$fresh/server.ts';
 import { AuthenticateRequestOptions } from '@clerk/backend/internal';
-import { clerkMiddleware } from 'src/server/index.ts';
+import { clerkMiddleware } from './server/index.ts';
 
 export interface ClerkPluginOptions {
   middlewareOptions?: AuthenticateRequestOptions;

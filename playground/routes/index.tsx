@@ -1,4 +1,4 @@
-import SignedIn from 'src/components/SignedIn.tsx';
+import SignedIn from '../../components/SignedIn.tsx';
 
 export default function Home() {
   return (

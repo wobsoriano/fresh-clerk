@@ -1,16 +1,6 @@
 {
-  "name": "@wobsoriano/fresh-clerk",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "lock": false,
-  "exports": {
-    ".": "./src/mod.ts",
-    "./components/SignedIn.tx": "./src/components/SignedIn.tsx",
-    "./hooks": "./src/hooks/index.ts",
-    "./islands/ClerkProvider.tsx": "./src/islands/ClerkProvider.tsx",
-    "./islands/SignIn.tsx": "./src/islands/SignIn.tsx",
-    "./islands/UserButton.tsx": "./src/islands/UserButton.tsx",
-    "./server": "./src/server/index.ts"
-  },
   "tasks": {
     "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
     "cli": "echo \"import '\\$fresh/src/dev/cli.ts'\" | deno run --unstable -A -",
@@ -47,7 +37,6 @@
     "preact": "npm:preact@10.19.6",
     "@preact/signals": "npm:@preact/signals@1.2.2",
     "$std/": "https://deno.land/std@0.216.0/",
-    "src/": "./src/",
     "@clerk/backend": "npm:@clerk/backend@1.13.5",
     "@clerk/clerk-js": "npm:@clerk/clerk-js@5.24.0",
     "@clerk/types": "npm:@clerk/types@4.23.0",

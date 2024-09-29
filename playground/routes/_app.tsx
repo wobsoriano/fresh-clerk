@@ -1,5 +1,5 @@
 import { type PageProps } from '$fresh/server.ts';
-import ClerkProvider from 'src/islands/ClerkProvider.tsx';
+import ClerkProvider from '../../islands/ClerkProvider.tsx';
 
 export default function App({ Component, state }: PageProps) {
   return (
