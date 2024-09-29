@@ -1,4 +1,4 @@
-import { UserButton } from '../../islands/mod.ts';
+import UserButton from '../../islands/UserButton.tsx';
 
 export default function Page() {
   return <UserButton />;
