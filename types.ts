@@ -1,4 +1,4 @@
-import type { Clerk, ClerkOptions, ClientResource, Without } from '../deps.ts';
+import type { Clerk, ClerkOptions, ClientResource, Without } from './deps.ts';
 
 export interface HeadlessBrowserClerk extends Clerk {
   load: (opts?: Without<ClerkOptions, 'isSatellite'>) => Promise<void>;
@@ -11,10 +11,6 @@ export interface BrowserClerk extends HeadlessBrowserClerk {
 }
 
 declare global {
-  interface Window {
-    Clerk: HeadlessBrowserClerk | BrowserClerk;
-  }
-
   interface globalThis {
     Clerk: HeadlessBrowserClerk | BrowserClerk;
   }

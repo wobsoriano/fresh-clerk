@@ -1,4 +1,4 @@
-import { SignedIn } from '../../components.ts';
+import { SignedIn } from '../../components/mod.ts';
 
 export default function Home() {
   return (

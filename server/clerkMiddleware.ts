@@ -1,15 +1,11 @@
 import { FreshContext } from '$fresh/server.ts';
-import { AuthObject } from '../deps.ts';
+import type { AuthenticateRequestOptions, AuthObject } from '../deps.ts';
 import { clerkClient } from './clerkClient.ts';
 import * as constants from './constants.ts';
 
 interface State {
   auth: AuthObject | null;
 }
-
-export type AuthenticateRequestOptions = Parameters<
-  typeof clerkClient.authenticateRequest
->[1];
 
 export function clerkMiddleware(options: AuthenticateRequestOptions) {
   return async (req: Request, ctx: FreshContext<State>) => {
