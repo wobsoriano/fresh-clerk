@@ -1,6 +1,9 @@
 {
-  "version": "0.0.12",
+  "version": "0.0.13",
   "lock": false,
+  "exports": {
+    "./server": "./server/index.ts"
+  },
   "tasks": {
     "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
     "cli": "echo \"import '\\$fresh/src/dev/cli.ts'\" | deno run --unstable -A -",
