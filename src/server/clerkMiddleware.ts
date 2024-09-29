@@ -1,11 +1,11 @@
-import { FreshContext } from "$fresh/server.ts";
-import { AuthObject } from "@clerk/backend";
-import { clerkClient } from "./clerkClient.ts";
-import * as constants from "./constants.ts";
+import { FreshContext } from '$fresh/server.ts';
+import { AuthObject } from '@clerk/backend';
+import { clerkClient } from './clerkClient.ts';
+import * as constants from './constants.ts';
 import {
   AuthenticateRequestOptions,
   AuthStatus,
-} from "@clerk/backend/internal";
+} from '@clerk/backend/internal';
 
 interface State {
   auth: AuthObject | null;
@@ -25,7 +25,7 @@ export function clerkMiddleware(options: AuthenticateRequestOptions) {
     }
 
     if (requestState.status === AuthStatus.Handshake) {
-      throw new Error("[fresh-clerk] Handshake status without redirect");
+      throw new Error('[fresh-clerk] Handshake status without redirect');
     }
 
     ctx.state.auth = requestState.toAuth();

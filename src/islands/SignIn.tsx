@@ -1,6 +1,6 @@
-import { useContext, useRef } from "preact/hooks";
-import { useSignalEffect } from "@preact/signals";
-import { ClerkContext } from "src/islands/ClerkProvider.tsx";
+import { useContext, useRef } from 'preact/hooks';
+import { useSignalEffect } from '@preact/signals';
+import { ClerkContext } from 'src/islands/ClerkProvider.tsx';
 
 interface SignInProps {
 }

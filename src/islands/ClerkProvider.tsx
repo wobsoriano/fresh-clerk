@@ -1,4 +1,4 @@
-import { deriveState, loadClerkJsScript } from "@clerk/shared";
+import { deriveState, loadClerkJsScript } from '@clerk/shared';
 import {
   ActiveSessionResource,
   ActJWTClaim,
@@ -9,17 +9,17 @@ import {
   OrganizationResource,
   Resources,
   UserResource,
-} from "@clerk/types";
+} from '@clerk/types';
 import {
   computed,
   type Signal,
   useSignal,
   useSignalEffect,
-} from "@preact/signals";
-import { createContext } from "preact";
-import { BrowserClerk, HeadlessBrowserClerk } from "src/utils/types.ts";
-import { ComponentChildren } from "preact";
-import { LoadClerkJsScriptOptions } from "@clerk/shared";
+} from '@preact/signals';
+import { createContext } from 'preact';
+import { BrowserClerk, HeadlessBrowserClerk } from 'src/utils/types.ts';
+import { ComponentChildren } from 'preact';
+import { LoadClerkJsScriptOptions } from '@clerk/shared';
 
 type ClerkProviderProps = LoadClerkJsScriptOptions & {
   initialState?: InitialState;

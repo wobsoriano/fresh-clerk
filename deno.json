@@ -1,14 +1,14 @@
 {
   "name": "@wobsoriano/fresh-clerk",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "lock": false,
   "exports": {
-    "./plugin.ts": "./src/plugin.ts",
+    ".": "./src/mod.ts",
     "./components/SignedIn.tx": "./src/components/SignedIn.tsx",
     "./hooks": "./src/hooks/index.ts",
-    "./islands/ClerkProvider.tsx": "./src/islands/ClerkProvider.ts",
-    "./islands/SignIn.tsx": "./src/islands/SignIn.ts",
-    "./islands/UserButton.tsx": "./src/islands/UserButton.ts",
+    "./islands/ClerkProvider.tsx": "./src/islands/ClerkProvider.tsx",
+    "./islands/SignIn.tsx": "./src/islands/SignIn.tsx",
+    "./islands/UserButton.tsx": "./src/islands/UserButton.tsx",
     "./server": "./src/server/index.ts"
   },
   "tasks": {
@@ -28,18 +28,18 @@
       ]
     }
   },
+  "fmt": {
+    "semiColons": true,
+    "singleQuote": true
+  },
   "exclude": [
     "**/_fresh/*"
   ],
   "publish": {
-    "include": [
-      "deno.json",
-      "README.md",
-      "LICENSE",
-      "src/"
-    ],
     "exclude": [
-      "playground/"
+      "playground",
+      ".zed",
+      ".github"
     ]
   },
   "imports": {

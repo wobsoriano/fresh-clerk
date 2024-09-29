@@ -1,13 +1,13 @@
-import { useContext, useRef } from "preact/hooks";
-import { useSignalEffect } from "@preact/signals";
-import { ClerkContext } from "src/islands/ClerkProvider.tsx";
+import { useContext, useRef } from 'preact/hooks';
+import { useSignalEffect } from '@preact/signals';
+import { ClerkContext } from 'src/islands/ClerkProvider.tsx';
 
 export default function UserButton() {
   const ctx = useContext(ClerkContext);
   const el = useRef<HTMLDivElement>(null!);
 
   if (!ctx) {
-    throw new Error("UserButton must be used within a ClerkProvider");
+    throw new Error('UserButton must be used within a ClerkProvider');
   }
 
   useSignalEffect(() => {

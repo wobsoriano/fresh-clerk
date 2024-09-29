@@ -3,10 +3,10 @@ import type {
   ClerkOptions,
   ClientResource,
   Without,
-} from "@clerk/types";
+} from '@clerk/types';
 
 export interface HeadlessBrowserClerk extends Clerk {
-  load: (opts?: Without<ClerkOptions, "isSatellite">) => Promise<void>;
+  load: (opts?: Without<ClerkOptions, 'isSatellite'>) => Promise<void>;
   updateClient: (client: ClientResource) => void;
 }
 
