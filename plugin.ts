@@ -1,5 +1,5 @@
 import { Plugin } from '$fresh/server.ts';
-import { AuthenticateRequestOptions } from './server.ts';
+import type { AuthenticateRequestOptions } from './server.ts';
 import { clerkMiddleware } from './server.ts';
 
 export interface ClerkPluginOptions {
@@ -21,9 +21,9 @@ export const clerkPlugin = (options: ClerkPluginOptions = {}): Plugin => {
     islands: {
       baseLocation: import.meta.url,
       paths: [
-        './islands/ClerkProvider.tsx',
-        './islands/SignIn.tsx',
-        './islands/UserButton.tsx',
+        './src/islands/ClerkProvider.tsx',
+        './src/islands/SignIn.tsx',
+        './src/islands/UserButton.tsx',
       ],
     },
   };
