@@ -1,5 +1,4 @@
-import { createClerkClient } from '@clerk/backend';
-
+import { createClerkClient } from '../deps.ts';
 import { API_URL, API_VERSION, JWT_KEY, SECRET_KEY } from './constants.ts';
 
 export const clerkClient = createClerkClient({

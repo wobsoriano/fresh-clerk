@@ -1,5 +1,5 @@
 import { FreshContext } from '$fresh/server.ts';
-import { AuthObject } from '@clerk/backend';
+import { AuthObject } from '../deps.ts';
 import { clerkClient } from './clerkClient.ts';
 import * as constants from './constants.ts';
 

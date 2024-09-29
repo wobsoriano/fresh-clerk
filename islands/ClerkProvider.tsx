@@ -1,5 +1,5 @@
-import { deriveState, loadClerkJsScript } from '@clerk/shared';
-import {
+import { deriveState, loadClerkJsScript } from '../deps.ts';
+import type {
   ActiveSessionResource,
   ActJWTClaim,
   ClientResource,
@@ -9,7 +9,7 @@ import {
   OrganizationResource,
   Resources,
   UserResource,
-} from '@clerk/types';
+} from '../deps.ts';
 import {
   computed,
   type Signal,
@@ -19,7 +19,7 @@ import {
 import { createContext } from 'preact';
 import { BrowserClerk, HeadlessBrowserClerk } from '../utils/types.ts';
 import { ComponentChildren } from 'preact';
-import { LoadClerkJsScriptOptions } from '@clerk/shared';
+import { LoadClerkJsScriptOptions } from '../deps.ts';
 
 type ClerkProviderProps = LoadClerkJsScriptOptions & {
   initialState?: InitialState;
