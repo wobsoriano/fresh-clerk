@@ -23,6 +23,7 @@ export const clerkPlugin = (options: ClerkPluginOptions = {}): Plugin => {
       paths: [
         './islands/ClerkProvider.tsx',
         './islands/UserButton.tsx',
+        './islands/mod.ts'
       ],
     },
   };
