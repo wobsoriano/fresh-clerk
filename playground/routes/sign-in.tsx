@@ -1,4 +1,4 @@
-import SignIn from '../../islands/SignIn.tsx';
+import { SignIn } from '../../islands.ts';
 
 export default function Page() {
   return (
