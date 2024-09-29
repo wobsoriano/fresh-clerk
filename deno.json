@@ -1,13 +1,15 @@
 {
   "name": "@wobsoriano/fresh-clerk",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "lock": false,
   "exports": {
     "./plugin.ts": "./src/plugin.ts",
-    "./components": "./components",
-    "./hooks": "./hooks/index.ts",
-    "./islands": "./islands/index.ts",
-    "./server": "./server/index.ts"
+    "./components/SignedIn.tx": "./src/components/SignedIn.tsx",
+    "./hooks": "./src/hooks/index.ts",
+    "./islands/ClerkProvider.tsx": "./src/islands/ClerkProvider.ts",
+    "./islands/SignIn.tsx": "./src/islands/SignIn.ts",
+    "./islands/UserButton.tsx": "./src/islands/UserButton.ts",
+    "./server": "./src/server/index.ts"
   },
   "tasks": {
     "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
