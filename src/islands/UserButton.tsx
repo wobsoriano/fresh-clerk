@@ -1,6 +1,6 @@
 import { useContext, useRef } from "preact/hooks";
 import { useSignalEffect } from "@preact/signals";
-import { ClerkContext } from "./ClerkProvider.tsx";
+import { ClerkContext } from "src/islands/ClerkProvider.tsx";
 
 export default function UserButton() {
   const ctx = useContext(ClerkContext);

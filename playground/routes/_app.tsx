@@ -1,6 +1,5 @@
 import { type PageProps } from "$fresh/server.ts";
-import { IS_BROWSER } from "$fresh/runtime.ts";
-import ClerkProvider from "../islands/ClerkProvider.tsx";
+import ClerkProvider from "src/islands/ClerkProvider.tsx";
 
 export default function App({ Component, state }: PageProps) {
   return (

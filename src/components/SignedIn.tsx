@@ -1,9 +1,9 @@
 import { useContext } from "preact/hooks";
-import { ClerkContext } from "./ClerkProvider.tsx";
+import { ClerkContext } from "src/islands/ClerkProvider.tsx";
 import { ComponentChildren } from "preact";
 
 interface SignedIn {
-  children: ComponentChildren
+  children: ComponentChildren;
 }
 
 export default function SignedIn(props: SignedIn) {

@@ -7,10 +7,7 @@ import * as $_app from "./routes/_app.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $profile from "./routes/profile.tsx";
 import * as $sign_in from "./routes/sign-in.tsx";
-import * as $ClerkProvider from "./islands/ClerkProvider.tsx";
-import * as $SignIn from "./islands/SignIn.tsx";
-import * as $SignedIn from "./islands/SignedIn.tsx";
-import * as $UserButton from "./islands/UserButton.tsx";
+
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -21,12 +18,7 @@ const manifest = {
     "./routes/profile.tsx": $profile,
     "./routes/sign-in.tsx": $sign_in,
   },
-  islands: {
-    "./islands/ClerkProvider.tsx": $ClerkProvider,
-    "./islands/SignIn.tsx": $SignIn,
-    "./islands/SignedIn.tsx": $SignedIn,
-    "./islands/UserButton.tsx": $UserButton,
-  },
+  islands: {},
   baseUrl: import.meta.url,
 } satisfies Manifest;
 
