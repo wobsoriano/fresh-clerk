@@ -3,13 +3,13 @@ import {
   OrganizationCustomPermissionKey,
   OrganizationCustomRoleKey,
 } from '../deps.ts';
-import { useClerkProvider } from '../hooks/mod.ts';
+import { userClerkContext } from '../hooks/mod.ts';
 import { computed } from '@preact/signals';
 
 export function SignedIn(
   props: { children: ComponentChildren },
 ): ComponentChildren {
-  const { auth } = useClerkProvider();
+  const { auth } = userClerkContext();
 
   return auth.value.userId ? props.children : null;
 }
@@ -17,7 +17,7 @@ export function SignedIn(
 export function SignedOut(
   props: { children: ComponentChildren },
 ): ComponentChildren {
-  const { auth } = useClerkProvider();
+  const { auth } = userClerkContext();
 
   return auth.value.userId ? null : props.children;
 }
@@ -38,7 +38,7 @@ export function Protect(
     children: ComponentChildren;
   },
 ): ComponentChildren {
-  const { auth } = useClerkProvider();
+  const { auth } = userClerkContext();
 
   const isUnauthorized = computed(() => {
     return !auth.value.userId ||

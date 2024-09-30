@@ -1,6 +1,6 @@
 import { cloneElement, type JSX, type VNode } from 'preact';
 import { SignInProps } from '../deps.ts';
-import { useClerkProvider } from '../hooks/mod.ts';
+import { userClerkContext } from '../hooks/mod.ts';
 
 type ButtonProps = {
   mode?: 'redirect' | 'modal';
@@ -18,7 +18,7 @@ export type SignInButtonProps =
   >;
 
 export default function SignInButton(props: SignInButtonProps): JSX.Element {
-  const { clerk } = useClerkProvider();
+  const { clerk } = userClerkContext();
   const {
     signUpFallbackRedirectUrl,
     forceRedirectUrl,

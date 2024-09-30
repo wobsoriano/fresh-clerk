@@ -1,13 +1,13 @@
 import { cloneElement, type JSX, type VNode } from 'preact';
 import { SignOutOptions } from '../deps.ts';
-import { useClerkProvider } from '../hooks/mod.ts';
+import { userClerkContext } from '../hooks/mod.ts';
 
 type SignOutButtonProps = SignOutOptions & {
   children?: VNode;
 };
 
 export default function SignUpButton(props: SignOutButtonProps): JSX.Element {
-  const { clerk } = useClerkProvider();
+  const { clerk } = userClerkContext();
 
   const { redirectUrl = '/', sessionId, children, ...rest } = props;
 
