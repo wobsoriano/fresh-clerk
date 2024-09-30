@@ -9,8 +9,7 @@ import { clerkClient } from './clerkClient.ts';
 import * as constants from './constants.ts';
 
 export interface State {
-  auth: AuthObject | null;
-  __clerk_ssr_state: Record<string, unknown>;
+  auth: AuthObject;
 }
 
 export function clerkMiddleware(options: AuthenticateRequestOptions) {
@@ -32,6 +31,7 @@ export function clerkMiddleware(options: AuthenticateRequestOptions) {
 
     const auth = requestState.toAuth();
     ctx.state.auth = auth;
+    // @ts-expect-error initialState is hidden from the types as it's a private prop
     ctx.state.__clerk_ssr_state = makeAuthObjectSerializable(
       stripPrivateDataFromObject(auth),
     );
