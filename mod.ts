@@ -2,7 +2,14 @@ import { Plugin } from '$fresh/server.ts';
 import type { AuthenticateRequestOptions } from './deps.ts';
 import { clerkMiddleware } from './server/mod.ts';
 
+/**
+ * Plugin options for the Fresh Clerk Plugin
+ */
 export interface ClerkPluginOptions {
+  /**
+   * Clerk authenticate request options
+   * @see {@link https://clerk.com/docs/references/backend/authenticate-request#authenticate-request-options authenticateRequest Docs}
+   */
   middlewareOptions?: AuthenticateRequestOptions;
 }
 

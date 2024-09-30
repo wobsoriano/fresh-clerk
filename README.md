@@ -59,8 +59,8 @@ export default function App({ Component, state }) {
     {/* head */}
     <body>
       <ClerkProvider
-        {/* Pass the auth state to enable SSR support */}
-        initialState={state.auth}
+        {/* Pass the state to enable SSR support */}
+        {...state}
         publishableKey={Deno.env.get('CLERK_PUBLISHABLE_KEY')}
       >
         <Component />

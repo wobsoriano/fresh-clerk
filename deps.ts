@@ -4,7 +4,11 @@ export {
   createClerkClient,
 } from 'npm:@clerk/backend@1.13.5';
 
-export type { AuthenticateRequestOptions } from 'npm:@clerk/backend@1.13.5/internal';
+export {
+  type AuthenticateRequestOptions,
+  makeAuthObjectSerializable,
+  stripPrivateDataFromObject,
+} from 'npm:@clerk/backend@1.13.5/internal';
 
 export {
   deriveState,

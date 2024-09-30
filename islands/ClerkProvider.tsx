@@ -3,7 +3,6 @@ import type {
   ActiveSessionResource,
   ActJWTClaim,
   ClientResource,
-  InitialState,
   OrganizationCustomPermissionKey,
   OrganizationCustomRoleKey,
   OrganizationResource,
@@ -22,7 +21,6 @@ import { ComponentChildren } from 'preact';
 import { LoadClerkJsScriptOptions } from '../deps.ts';
 
 type ClerkProviderProps = LoadClerkJsScriptOptions & {
-  initialState?: InitialState;
   children?: ComponentChildren;
 };
 
@@ -55,8 +53,10 @@ export default function ClerkProvider(props: ClerkProviderProps): JSX.Element {
     user: undefined,
     organization: undefined,
   });
+  // @ts-expect-error initialState is hidden from the types as it's a private prop
+  const initialState = props.__clerk_ssr_state;
   const auth = computed(() =>
-    deriveState(loaded.value, resources.value, props.initialState)
+    deriveState(loaded.value, resources.value, initialState)
   );
   const client = computed(() => resources.value.client);
   const session = computed(() => auth.value.session);

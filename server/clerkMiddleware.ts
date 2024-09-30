@@ -1,10 +1,16 @@
 import { FreshContext } from '$fresh/server.ts';
-import type { AuthenticateRequestOptions, AuthObject } from '../deps.ts';
+import {
+  type AuthenticateRequestOptions,
+  type AuthObject,
+  makeAuthObjectSerializable,
+  stripPrivateDataFromObject,
+} from '../deps.ts';
 import { clerkClient } from './clerkClient.ts';
 import * as constants from './constants.ts';
 
 interface State {
   auth: AuthObject | null;
+  __clerk_ssr_state: Record<string, unknown>;
 }
 
 export function clerkMiddleware(options: AuthenticateRequestOptions) {
@@ -24,7 +30,11 @@ export function clerkMiddleware(options: AuthenticateRequestOptions) {
       throw new Error('[fresh-clerk] Handshake status without redirect');
     }
 
-    ctx.state.auth = requestState.toAuth();
+    const auth = requestState.toAuth();
+    ctx.state.auth = auth;
+    ctx.state.__clerk_ssr_state = makeAuthObjectSerializable(
+      stripPrivateDataFromObject(auth),
+    );
 
     const resp = await ctx.next();
 

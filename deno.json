@@ -5,7 +5,7 @@
     "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
     "cli": "echo \"import '\\$fresh/src/dev/cli.ts'\" | deno run --unstable -A -",
     "manifest": "deno task cli manifest $(pwd)",
-    "start": "deno run -A --watch=playground/routes/ playground/dev.ts",
+    "start": "deno run -A --watch=playground/static,playground/routes/ playground/dev.ts",
     "build": "deno run -A playground/dev.ts build",
     "preview": "deno run -A playground/main.ts",
     "update": "deno run -A -r https://fresh.deno.dev/update ."
