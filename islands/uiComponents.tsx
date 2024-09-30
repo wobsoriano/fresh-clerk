@@ -1,7 +1,7 @@
 import { useRef } from 'preact/hooks';
 import type { JSX } from 'preact';
 import { useSignalEffect } from '@preact/signals';
-import { userClerkContext } from '../hooks/mod.ts';
+import { useClerkContext } from '../hooks/mod.ts';
 import type {
   CreateOrganizationProps,
   OrganizationProfileProps,
@@ -32,7 +32,7 @@ interface PortalProps<T extends Record<string, any>> {
 export const Portal = <T extends Record<string, any>>(
   props: PortalProps<T>,
 ): JSX.Element => {
-  const { clerk, loaded } = userClerkContext();
+  const { clerk, loaded } = useClerkContext();
   const el = useRef<HTMLDivElement>(null!);
 
   useSignalEffect(() => {
