@@ -10,6 +10,7 @@ import type {
   SignUpProps,
   UserButtonProps,
   UserProfileProps,
+  OrganizationListProps,
 } from '../deps.ts';
 
 const components = [
@@ -20,6 +21,7 @@ const components = [
   'CreateOrganization',
   'OrganizationProfile',
   'OrganizationSwitcher',
+  'OrganizationList',
 ] as const;
 
 interface PortalProps<T extends Record<string, any>> {
@@ -48,6 +50,9 @@ export const Portal = <T extends Record<string, any>>(
   return <div ref={el} />;
 };
 
+/**
+ * @see {@link https://clerk.com/docs/components/authentication/sign-in}
+ */
 export function SignIn(props: SignInProps): JSX.Element {
   return (
     <Portal
@@ -57,6 +62,9 @@ export function SignIn(props: SignInProps): JSX.Element {
   );
 }
 
+/**
+ * @see {@link https://clerk.com/docs/components/authentication/sign-up}
+ */
 export function SignUp(props: SignUpProps): JSX.Element {
   return (
     <Portal
@@ -66,6 +74,9 @@ export function SignUp(props: SignUpProps): JSX.Element {
   );
 }
 
+/**
+ * @see {@link https://clerk.com/docs/components/user/user-button}
+ */
 export function UserButton(props: UserButtonProps): JSX.Element {
   return (
     <Portal
@@ -75,6 +86,9 @@ export function UserButton(props: UserButtonProps): JSX.Element {
   );
 }
 
+/**
+ * @see {@link https://clerk.com/docs/components/user/user-profile}
+ */
 export function UserProfile(props: UserProfileProps): JSX.Element {
   return (
     <Portal
@@ -84,6 +98,9 @@ export function UserProfile(props: UserProfileProps): JSX.Element {
   );
 }
 
+/**
+ * @see {@link https://clerk.com/docs/components/organization/create-organization}
+ */
 export function CreateOrganization(
   props: CreateOrganizationProps,
 ): JSX.Element {
@@ -95,6 +112,9 @@ export function CreateOrganization(
   );
 }
 
+/**
+ * @see {@link https://clerk.com/docs/components/organization/organization-profile}
+ */
 export function OrganizationProfile(
   props: OrganizationProfileProps,
 ): JSX.Element {
@@ -106,12 +126,29 @@ export function OrganizationProfile(
   );
 }
 
+/**
+ * @see {@link https://clerk.com/docs/components/organization/organization-switcher}
+ */
 export function OrganizationSwitcher(
   props: OrganizationSwitcherProps,
 ): JSX.Element {
   return (
     <Portal
       component='OrganizationSwitcher'
+      props={props}
+    />
+  );
+}
+
+/**
+ * @see {@link https://clerk.com/docs/components/organization/organization-list}
+ */
+export function OrganizationList(
+  props: OrganizationListProps,
+): JSX.Element {
+  return (
+    <Portal
+      component='OrganizationList'
       props={props}
     />
   );
