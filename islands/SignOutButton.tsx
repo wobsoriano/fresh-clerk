@@ -13,11 +13,9 @@ export default function SignUpButton(props: SignOutButtonProps) {
 
   function clickHandler() {
     if (!clerk.value) {
-      console.log('no clerk')
       return;
     }
 
-    console.log('Signing out')
     return clerk.value.signOut({ redirectUrl, sessionId });
   }
 
