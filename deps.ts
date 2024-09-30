@@ -27,6 +27,7 @@ export type {
   InitialState,
   OrganizationCustomPermissionKey,
   OrganizationCustomRoleKey,
+  OrganizationListProps,
   OrganizationProfileProps,
   OrganizationResource,
   OrganizationSwitcherProps,
@@ -38,5 +39,4 @@ export type {
   UserProfileProps,
   UserResource,
   Without,
-  OrganizationListProps,
 } from 'npm:@clerk/types@4.23.0';

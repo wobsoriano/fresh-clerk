@@ -4,13 +4,13 @@ import { useSignalEffect } from '@preact/signals';
 import { useClerkContext } from '../hooks/mod.ts';
 import type {
   CreateOrganizationProps,
+  OrganizationListProps,
   OrganizationProfileProps,
   OrganizationSwitcherProps,
   SignInProps,
   SignUpProps,
   UserButtonProps,
   UserProfileProps,
-  OrganizationListProps,
 } from '../deps.ts';
 
 const components = [

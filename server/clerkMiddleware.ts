@@ -8,7 +8,7 @@ import {
 import { clerkClient } from './clerkClient.ts';
 import * as constants from './constants.ts';
 
-interface State {
+export interface State {
   auth: AuthObject | null;
   __clerk_ssr_state: Record<string, unknown>;
 }
