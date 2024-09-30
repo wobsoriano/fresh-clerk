@@ -41,8 +41,8 @@ export function Protect(
   const { auth } = useClerkContext();
 
   const isUnauthorized = computed(() => {
-    return !auth.value.userId ||
-      ((props.role || props.permission) && !auth.value.has(props));
+    // @ts-expect-error: Fix has missing
+    return !auth.value.userId || ((props.role || props.permission) && !auth.value.has(props));
   });
 
   return isUnauthorized.value ? props.fallback : props.children;
