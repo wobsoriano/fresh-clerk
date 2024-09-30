@@ -1,7 +1,7 @@
 import { useContext } from 'preact/hooks';
 import { ClerkContext } from '../islands/ClerkProvider.tsx';
 
-export function useClerkProvider() {
+export function useClerkContext() {
   const ctx = useContext(ClerkContext);
 
   if (!ctx) {

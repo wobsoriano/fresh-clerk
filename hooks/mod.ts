@@ -1,1 +1,1 @@
-export { useClerkProvider } from './useClerkProvider.ts';
+export { useClerkContext } from './useClerkContext.ts';
