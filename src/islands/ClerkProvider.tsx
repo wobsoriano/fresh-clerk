@@ -24,25 +24,25 @@ type ClerkProviderProps = LoadClerkJsScriptOptions & {
   children?: ComponentChildren;
 };
 
-export const ClerkContext = createContext<
-  {
-    clerk: Signal<HeadlessBrowserClerk | BrowserClerk | null>;
-    loaded: Signal<boolean>;
-    auth: Signal<{
-      userId: string | null | undefined;
-      sessionId: string | null | undefined;
-      actor: ActJWTClaim | null | undefined;
-      orgId: string | null | undefined;
-      orgRole: OrganizationCustomRoleKey | null | undefined;
-      orgSlug: string | null | undefined;
-      orgPermissions: OrganizationCustomPermissionKey[] | null | undefined;
-    }>;
-    client: Signal<ClientResource | null | undefined>;
-    session: Signal<ActiveSessionResource | null | undefined>;
-    user: Signal<UserResource | null | undefined>;
-    organization: Signal<OrganizationResource | null | undefined>;
-  } | null
->(null);
+export type ClerkContextType = {
+  clerk: Signal<HeadlessBrowserClerk | BrowserClerk | null>;
+  loaded: Signal<boolean>;
+  auth: Signal<{
+    userId: string | null | undefined;
+    sessionId: string | null | undefined;
+    actor: ActJWTClaim | null | undefined;
+    orgId: string | null | undefined;
+    orgRole: OrganizationCustomRoleKey | null | undefined;
+    orgSlug: string | null | undefined;
+    orgPermissions: OrganizationCustomPermissionKey[] | null | undefined;
+  }>;
+  client: Signal<ClientResource | null | undefined>;
+  session: Signal<ActiveSessionResource | null | undefined>;
+  user: Signal<UserResource | null | undefined>;
+  organization: Signal<OrganizationResource | null | undefined>;
+}
+
+export const ClerkContext = createContext<ClerkContextType | null>(null);
 
 export default function ClerkProvider(props: ClerkProviderProps): JSX.Element {
   const clerk = useSignal<HeadlessBrowserClerk | BrowserClerk | null>(null);

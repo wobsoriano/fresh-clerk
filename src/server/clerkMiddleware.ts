@@ -14,7 +14,7 @@ export interface State {
 
 const define = createDefine<State>();
 
-export function clerkMiddleware(options: AuthenticateRequestOptions) {
+export function clerkMiddleware(options: AuthenticateRequestOptions): Promise<Response> {
   const middleware = define.middleware(async (ctx) => {
     const requestState = await clerkClient.authenticateRequest(ctx.req, {
       ...options,
