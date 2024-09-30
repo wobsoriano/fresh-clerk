@@ -1,5 +1,8 @@
 import { useContext } from 'preact/hooks';
-import { ClerkContext, type ClerkContextType } from '../islands/ClerkProvider.tsx';
+import {
+  ClerkContext,
+  type ClerkContextType,
+} from '../islands/ClerkProvider.tsx';
 
 export function useClerkContext(): ClerkContextType {
   const ctx = useContext(ClerkContext);

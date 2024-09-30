@@ -40,7 +40,7 @@ export type ClerkContextType = {
   session: Signal<ActiveSessionResource | null | undefined>;
   user: Signal<UserResource | null | undefined>;
   organization: Signal<OrganizationResource | null | undefined>;
-}
+};
 
 export const ClerkContext = createContext<ClerkContextType | null>(null);
 
