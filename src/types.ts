@@ -9,9 +9,3 @@ export interface BrowserClerk extends HeadlessBrowserClerk {
   onComponentsReady: Promise<void>;
   components: unknown;
 }
-
-declare global {
-  interface globalThis {
-    Clerk: HeadlessBrowserClerk | BrowserClerk;
-  }
-}
