@@ -1,25 +1,15 @@
-# fresh_clerk
+# fresh-clerk
 
 Community package that integrates Clerk with Deno and
 [Fresh](https://fresh.deno.dev/) 🍋
 
 ## Installation
 
-Fresh Clerk is available on [deno.land/x](https://deno.land/x/fresh_clerk/). To
-use it, import into a module:
+Fresh Clerk is available on [JSR](https://jsr.io/@oak/oak). To use it, import
+into a module:
 
 ```ts
-import { clerkPlugin } from 'https://deno.land/x/fresh_clerk/mod.ts';
-```
-
-or via import map inside `deno.json`:
-
-```json
-{
-  "imports": {
-    "$clerk/": "https://deno.land/x/fresh_clerk/"
-  }
-}
+import { clerkPlugin } from 'jsr:@wobsoriano/fresh-clerk';
 ```
 
 ## Set environment variables
@@ -31,14 +21,16 @@ CLERK_SECRET_KEY=sk_test_xxxxxxx
 
 ## Install plugin
 
-Inside your `fresh.config.ts` file, add the following:
+Enable the plugin inside your `dev.ts` file:
 
 ```ts
-import { clerkPlugin } from '$clerk/mod.ts';
+import { Builder } from 'fresh/dev';
+import { app } from './main.ts';
+import { clerkPlugin } from 'jsr:@wobsoriano/fresh-clerk/plugin';
 
-export default defineConfig({
-  plugins: [clerkPlugin()],
-});
+const builder = new Builder();
+
+clerkPlugin(app);
 ```
 
 The plugin will add a middleware built on top of Clerk backend SDK and process
@@ -51,7 +43,7 @@ All Clerk components, islands and hooks must be children of the
 
 ```ts
 // _app.tsx
-import { ClerkProvider } from '$clerk/islands/mod.ts';
+import { ClerkProvider } from 'jsr:@wobsoriano/fresh-clerk/islands';
 
 export default function App({ Component, state }) {
   return (
@@ -109,7 +101,7 @@ demonstrates a basic example of how you could use the
 method to retrieve a session token for fetching data from an external resource.
 
 ```tsx
-import { useClerkContext } from '$clerk/hooks/mod.ts';
+import { useClerkContext } from 'jsr:@wobsoriano/fresh-clerk/hooks';
 
 export default function SomeIsland() {
   const { auth, session } = useClerkContext();
@@ -141,8 +133,8 @@ components are used to control the visibility of your pages based on the user's
 authentication state.
 
 ```tsx
-import { SignedIn, SignedOut, SignOutButton } from '$clerk/components/mod.ts';
-import { UserButton } from '$clerk/islands/mod.ts';
+import { SignedIn, SignedOut } from 'jsr:@wobsoriano/fresh-clerk/components';
+import { SignOutButton, UserButton } from 'jsr:@wobsoriano/fresh-clerk/islands';
 
 export default function Index() {
   return (
@@ -179,12 +171,8 @@ This `auth` object contains a `userId` that you can use to determine if the user
 is authenticated.
 
 ```tsx
-import { defineRoute } from 'fresh/server.ts';
-
-export default defineRoute((_req, ctx) => {
-  const { userId } = ctx.state.auth;
-
-  if (!userId) {
+export default define.page(function Page(ctx) {
+  if (!ctx.state.auth.userId) {
     return new Response('', {
       status: 307,
       headers: { Location: '/sign-in' },
@@ -197,7 +185,7 @@ export default defineRoute((_req, ctx) => {
       <p>You are signed in!</p>
     </div>
   );
-}
+});
 ```
 
 ## License
