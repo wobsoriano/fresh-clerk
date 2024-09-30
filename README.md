@@ -1,6 +1,7 @@
 # fresh_clerk
 
-Community package that integrates Clerk with Deno and [Fresh](https://fresh.deno.dev/) 🍋
+Community package that integrates Clerk with Deno and
+[Fresh](https://fresh.deno.dev/) 🍋
 
 ## Installation
 
@@ -40,8 +41,8 @@ export default defineConfig({
 });
 ```
 
-The plugin will add a middleware built on top of Clerk backend SDK and process and bundle the
-Clerk frontend islands.
+The plugin will add a middleware built on top of Clerk backend SDK and process
+and bundle the Clerk frontend islands.
 
 ## Add `<ClerkProvider>` to your App wrapper
 
@@ -75,6 +76,9 @@ export default function App({ Component, state }) {
 - `<SignedIn>`
 - `<SignedOut>`
 - `<Protect>`
+- `<SignInButton>` (island)
+- `<SignUpButton>` (island)
+- `<SignOutButton>` (island)
 - `<SignIn>` (island)
 - `<SignUp>` (island)
 - `<UserButton>` (island)

@@ -3,9 +3,9 @@ import { SignIn } from '../../islands/mod.ts';
 
 export default defineRoute((_req, ctx) => {
   if (ctx.state.auth.userId) {
-    return new Response("", {
+    return new Response('', {
       status: 307,
-      headers: { Location: "/profile" },
+      headers: { Location: '/profile' },
     });
   }
 
@@ -14,4 +14,4 @@ export default defineRoute((_req, ctx) => {
       <SignIn />
     </div>
   );
-})
+});

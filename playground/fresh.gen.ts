@@ -7,7 +7,7 @@ import * as $_app from './routes/_app.tsx';
 import * as $index from './routes/index.tsx';
 import * as $profile from './routes/profile.tsx';
 import * as $sign_in from './routes/sign-in.tsx';
-
+import * as $CustomSignOutButton from './islands/CustomSignOutButton.tsx';
 import { type Manifest } from '$fresh/server.ts';
 
 const manifest = {
@@ -18,7 +18,9 @@ const manifest = {
     './routes/profile.tsx': $profile,
     './routes/sign-in.tsx': $sign_in,
   },
-  islands: {},
+  islands: {
+    './islands/CustomSignOutButton.tsx': $CustomSignOutButton,
+  },
   baseUrl: import.meta.url,
 } satisfies Manifest;
 

@@ -28,6 +28,7 @@ export type {
   OrganizationSwitcherProps,
   Resources,
   SignInProps,
+  SignOutOptions,
   SignUpProps,
   UserButtonProps,
   UserProfileProps,
