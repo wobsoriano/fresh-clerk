@@ -40,7 +40,7 @@ export default defineConfig({
 });
 ```
 
-The plugin will add the Clerk backend SDK middleware and process and bundle the
+The plugin will add a middleware built on top of Clerk backend SDK and process and bundle the
 Clerk frontend islands.
 
 ## Add `<ClerkProvider>` to your App wrapper
