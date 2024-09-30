@@ -42,7 +42,8 @@ export function Protect(
 
   const isUnauthorized = computed(() => {
     // @ts-expect-error: Fix has missing
-    return !auth.value.userId || ((props.role || props.permission) && !auth.value.has(props));
+    return !auth.value.userId ||
+      ((props.role || props.permission) && !auth.value.has(props));
   });
 
   return isUnauthorized.value ? props.fallback : props.children;

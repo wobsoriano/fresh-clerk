@@ -19,7 +19,7 @@ export function clerkPlugin<T>(
   options: ClerkPluginOptions = {},
 ) {
   // Register middleware
-  app.use(clerkMiddleware({}));
+  app.use(clerkMiddleware(options.middlewareOptions!) as any);
 
   // Register islands
   const islandsUrl = new URL('./islands/mod.ts', import.meta.url);
