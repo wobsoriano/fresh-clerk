@@ -1,8 +1,12 @@
-#!/usr/bin/env -S deno run -A --watch=static/,routes/
+#!/usr/bin/env -S deno run -A --watch=playground/static/,playground/routes/
 
-import dev from '$fresh/dev.ts';
-import config from './fresh.config.ts';
+import { Builder } from 'fresh/dev';
+import { app } from './main.ts';
 
-import '$std/dotenv/load.ts';
+const builder = new Builder();
 
-await dev(import.meta.url, './main.ts', config);
+if (Deno.args.includes('build')) {
+  await builder.build(app);
+} else {
+  await builder.listen(app);
+}

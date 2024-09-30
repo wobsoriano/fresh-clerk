@@ -1,10 +1,10 @@
-import { FreshContext } from '$fresh/server.ts';
 import {
   type AuthenticateRequestOptions,
   type AuthObject,
   makeAuthObjectSerializable,
   stripPrivateDataFromObject,
 } from '../deps.ts';
+import { createDefine } from 'fresh';
 import { clerkClient } from './clerkClient.ts';
 import * as constants from './constants.ts';
 
@@ -12,9 +12,11 @@ export interface State {
   auth: AuthObject;
 }
 
+const define = createDefine<State>();
+
 export function clerkMiddleware(options: AuthenticateRequestOptions) {
-  return async (req: Request, ctx: FreshContext<State>) => {
-    const requestState = await clerkClient.authenticateRequest(req, {
+  const middleware = define.middleware(async (ctx) => {
+    const requestState = await clerkClient.authenticateRequest(ctx.req, {
       ...options,
       secretKey: options?.secretKey ?? constants.SECRET_KEY,
       publishableKey: options?.publishableKey ?? constants.PUBLISHABLE_KEY,
@@ -43,5 +45,7 @@ export function clerkMiddleware(options: AuthenticateRequestOptions) {
     });
 
     return resp;
-  };
+  });
+
+  return middleware;
 }
