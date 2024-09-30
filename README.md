@@ -1,6 +1,6 @@
 # fresh_clerk
 
-Community package that integrates [Clerk](https://clerk.com) with [Deno](https://deno.com/) and [Fresh](https://fresh.deno.dev/) 🍋
+Community package that integrates Clerk with Deno and [Fresh](https://fresh.deno.dev/) 🍋
 
 ## Installation
 
