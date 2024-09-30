@@ -2,9 +2,6 @@ import { App } from 'fresh';
 import type { AuthenticateRequestOptions } from './deps.ts';
 import { clerkMiddleware } from './server/mod.ts';
 import * as clerkIslands from './islands/mod.ts';
-import ClerkProvider from 'src/islands/ClerkProvider.tsx';
-import { SignIn } from 'src/islands/uiComponents.tsx';
-import SignOutButton from 'src/islands/SignOutButton.tsx';
 
 /**
  * Plugin options for the Fresh Clerk Plugin
