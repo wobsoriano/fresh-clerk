@@ -2,10 +2,11 @@
 
 ## Installation
 
-Fresh Clerk is available on [deno.land/x](https://deno.land/x/fresh_clerk/). To use it, import into a module:
+Fresh Clerk is available on [deno.land/x](https://deno.land/x/fresh_clerk/). To
+use it, import into a module:
 
 ```ts
-import { clerkPlugin } from 'https://deno.land/x/fresh_clerk/mod.ts'
+import { clerkPlugin } from 'https://deno.land/x/fresh_clerk/mod.ts';
 ```
 
 or via import map inside `deno.json`:
@@ -30,18 +31,20 @@ CLERK_SECRET_KEY=sk_test_xxxxxxx
 Inside your `fresh.config.ts` file, add the following:
 
 ```ts
-import { clerkPlugin } from '$clerk/mod.ts'
+import { clerkPlugin } from '$clerk/mod.ts';
 
 export default defineConfig({
-  plugins: [clerkPlugin()]
-})
+  plugins: [clerkPlugin()],
+});
 ```
 
-The plugin will add the Clerk backend SDK middleware and process and bundle the Clerk frontend islands.
+The plugin will add the Clerk backend SDK middleware and process and bundle the
+Clerk frontend islands.
 
 ## Add `<ClerkProvider>` to your App wrapper
 
-All Clerk components, islands and hooks must be children of the `<ClerkProvider>` component, which provides active session and user context.
+All Clerk components, islands and hooks must be children of the
+`<ClerkProvider>` component, which provides active session and user context.
 
 ```ts
 // _app.tsx
@@ -81,36 +84,45 @@ export default function App({ Component, state }) {
 ## Signals
 
 - `auth` - Auth state.
-- `user` - Authenticated [user](https://clerk.com/docs/references/javascript/user/user).
-- `organization` - Active [Organization](https://clerk.com/docs/references/javascript/organization/organization) of the authenticated user.
-- `session` - [Session](https://clerk.com/docs/references/javascript/session) of the authenticated user.
-- `clerk` - See [`Clerk`](https://clerk.com/docs/references/javascript/clerk/clerk).
+- `user` - Authenticated
+  [user](https://clerk.com/docs/references/javascript/user/user).
+- `organization` - Active
+  [Organization](https://clerk.com/docs/references/javascript/organization/organization)
+  of the authenticated user.
+- `session` - [Session](https://clerk.com/docs/references/javascript/session) of
+  the authenticated user.
+- `clerk` - See
+  [`Clerk`](https://clerk.com/docs/references/javascript/clerk/clerk).
 
 Example:
 
-The following example demonstrates how to use the `auth` signal to access the current auth state, like whether the user is signed in or not. It also demonstrates a basic example of how you could use the [`getToken()`](https://clerk.com/docs/references/javascript/session#get-token) method to retrieve a session token for fetching data from an external resource.
+The following example demonstrates how to use the `auth` signal to access the
+current auth state, like whether the user is signed in or not. It also
+demonstrates a basic example of how you could use the
+[`getToken()`](https://clerk.com/docs/references/javascript/session#get-token)
+method to retrieve a session token for fetching data from an external resource.
 
 ```tsx
-import { useClerkContext } from '$clerk/hooks/mod.ts'
+import { useClerkContext } from '$clerk/hooks/mod.ts';
 
 export default function SomeIsland() {
-  const { auth, session } = useClerkContext()
+  const { auth, session } = useClerkContext();
 
   async function fetchDataFromExternalResource() {
-    const token = await session.value.getToken()
-		// Add logic to fetch your data
-		return data
+    const token = await session.value.getToken();
+    // Add logic to fetch your data
+    return data;
   }
 
   if (auth.value === undefined) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   if (auth.value === null) {
-    return <div>Sign in to view this page</div>
+    return <div>Sign in to view this page</div>;
   }
 
-  return <div>...</div>
+  return <div>...</div>;
 }
 ```
 
@@ -118,11 +130,13 @@ export default function SomeIsland() {
 
 ### Client side
 
-Clerk offers Control Components that allow you to protect your pages. These components are used to control the visibility of your pages based on the user's authentication state.
+Clerk offers Control Components that allow you to protect your pages. These
+components are used to control the visibility of your pages based on the user's
+authentication state.
 
 ```tsx
-import { SignedIn, SignedOut, SignOutButton } from '$clerk/components/mod.ts'
-import { UserButton } from '$clerk/islands/mod.ts'
+import { SignedIn, SignedOut, SignOutButton } from '$clerk/components/mod.ts';
+import { UserButton } from '$clerk/islands/mod.ts';
 
 export default function Index() {
   return (
@@ -141,20 +155,42 @@ export default function Index() {
       <SignedOut>
         <p>You are signed out</p>
         <div>
-          <a href="/sign-in">Go to Sign in</a>
+          <a href='/sign-in'>Go to Sign in</a>
         </div>
         <div>
-          <a href="/sign-up">Go to Sign up</a>
+          <a href='/sign-up'>Go to Sign up</a>
         </div>
       </SignedOut>
     </div>
-  )
+  );
 }
 ```
 
 ## Server side
 
-WIP
+To protect your routes, use the `auth` object in your route context's state.
+This `auth` object contains a `userId` that you can use to determine if the user
+is authenticated.
+
+```tsx
+export default async function Index(ctx) {
+  const { userId } = ctx.state.auth;
+
+  if (!userId) {
+    return new Response('', {
+      status: 307,
+      headers: { Location: '/sign-in' },
+    });
+  }
+
+  return (
+    <div>
+      <h1>Index route</h1>
+      <p>You are signed in!</p>
+    </div>
+  );
+}
+```
 
 ## License
 
