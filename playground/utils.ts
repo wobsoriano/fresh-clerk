@@ -1,4 +1,4 @@
-import { createDefine } from "fresh";
+import { createDefine } from 'fresh';
 
 // deno-lint-ignore no-empty-interface
 export interface State {}

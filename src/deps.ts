@@ -19,6 +19,7 @@ export {
 export type {
   ActiveSessionResource,
   ActJWTClaim,
+  CheckAuthorization,
   CheckAuthorizationWithCustomPermissions,
   Clerk,
   ClerkOptions,

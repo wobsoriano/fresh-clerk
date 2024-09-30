@@ -16,4 +16,4 @@ export default define.page(function Page(ctx: FreshContext<State>) {
       <SignIn />
     </div>
   );
-})
+});

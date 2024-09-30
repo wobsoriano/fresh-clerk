@@ -18,4 +18,4 @@ export default define.page(function Page(ctx: FreshContext<State>) {
       <CustomSignOutButton />
     </div>
   );
-})
+});

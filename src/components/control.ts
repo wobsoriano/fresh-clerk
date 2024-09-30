@@ -1,5 +1,6 @@
 import type { ComponentChildren } from 'preact';
 import {
+  CheckAuthorization,
   OrganizationCustomPermissionKey,
   OrganizationCustomRoleKey,
 } from '../deps.ts';
@@ -38,12 +39,16 @@ export function Protect(
     children: ComponentChildren;
   },
 ): ComponentChildren {
-  const { auth } = useClerkContext();
+  const { auth, session } = useClerkContext();
 
   const isUnauthorized = computed(() => {
     return !auth.value.userId ||
-      // @ts-expect-error: Fix has missing
-      ((props.role || props.permission) && !auth.value.has(props));
+      ((props.role || props.permission) &&
+        !session.value!.checkAuthorization(
+          { role: props.role, permission: props.permission } as Parameters<
+            CheckAuthorization
+          >[0],
+        ));
   });
 
   return isUnauthorized.value ? props.fallback : props.children;

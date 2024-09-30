@@ -23,4 +23,4 @@ export default define.page(function Page() {
       </SignedIn>
     </div>
   );
-})
+});
