@@ -1,5 +1,7 @@
 # fresh_clerk
 
+Community package that integrates [Clerk](https://clerk.com) with [Deno](https://deno.com/) and [Fresh](https://fresh.deno.dev/) 🍋
+
 ## Installation
 
 Fresh Clerk is available on [deno.land/x](https://deno.land/x/fresh_clerk/). To
