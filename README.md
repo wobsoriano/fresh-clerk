@@ -173,7 +173,7 @@ This `auth` object contains a `userId` that you can use to determine if the user
 is authenticated.
 
 ```tsx
-export default async function Index(ctx) {
+export default function Index(ctx) {
   const { userId } = ctx.state.auth;
 
   if (!userId) {
