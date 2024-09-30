@@ -1,4 +1,4 @@
-import { cloneElement, type VNode } from 'preact';
+import { cloneElement, type JSX, type VNode } from 'preact';
 import { SignInProps } from '../deps.ts';
 import { useClerkProvider } from '../hooks/mod.ts';
 
@@ -17,7 +17,7 @@ export type SignInButtonProps =
     | 'signUpFallbackRedirectUrl'
   >;
 
-export default function SignInButton(props: SignInButtonProps) {
+export default function SignInButton(props: SignInButtonProps): JSX.Element {
   const { clerk } = useClerkProvider();
   const {
     signUpFallbackRedirectUrl,
