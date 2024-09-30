@@ -1,7 +1,8 @@
-import { type PageProps } from '$fresh/server.ts';
-import { ClerkProvider } from '../../islands/mod.ts';
+import { type PageProps } from 'fresh';
+import { ClerkProvider } from 'src/islands/mod.ts';
+import { State } from 'src/server/mod.ts';
 
-export default function App({ Component, state }: PageProps) {
+export default function App({ Component, state }: PageProps<State>) {
   return (
     <html>
       <head>

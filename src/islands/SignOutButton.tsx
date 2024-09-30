@@ -6,7 +6,7 @@ type SignOutButtonProps = SignOutOptions & {
   children?: VNode;
 };
 
-export default function SignUpButton(props: SignOutButtonProps): JSX.Element {
+export default function SignOutButton(props: SignOutButtonProps): JSX.Element {
   const { clerk } = useClerkContext();
 
   const { redirectUrl = '/', sessionId, children, ...rest } = props;

@@ -1,7 +1,8 @@
-import { defineRoute } from '$fresh/server.ts';
-import { SignIn } from '../../islands/mod.ts';
+import { FreshContext } from 'fresh';
+import { SignIn } from 'src/islands/mod.ts';
+import { State } from 'src/server/mod.ts';
 
-export default defineRoute((_req, ctx) => {
+export default function Page(ctx: FreshContext<State>) {
   if (ctx.state.auth.userId) {
     return new Response('', {
       status: 307,
@@ -14,4 +15,4 @@ export default defineRoute((_req, ctx) => {
       <SignIn />
     </div>
   );
-});
+}

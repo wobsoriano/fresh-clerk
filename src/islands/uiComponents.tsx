@@ -29,7 +29,7 @@ interface PortalProps<T extends Record<string, any>> {
   props?: T;
 }
 
-export const Portal = <T extends Record<string, any>>(
+const Portal = <T extends Record<string, any>>(
   props: PortalProps<T>,
 ): JSX.Element => {
   const { clerk, loaded } = useClerkContext();

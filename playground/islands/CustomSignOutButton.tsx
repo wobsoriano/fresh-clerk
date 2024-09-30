@@ -1,4 +1,4 @@
-import { SignOutButton } from '../../islands/mod.ts';
+import { SignOutButton } from 'src/islands/mod.ts';
 
 export default function CustomSignOutButton() {
   return (
