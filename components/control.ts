@@ -1,4 +1,4 @@
-import { ComponentChildren } from 'preact';
+import type { ComponentChildren } from 'preact';
 import {
   OrganizationCustomPermissionKey,
   OrganizationCustomRoleKey,
@@ -6,13 +6,17 @@ import {
 import { useClerkProvider } from '../hooks/mod.ts';
 import { computed } from '@preact/signals';
 
-export function SignedIn(props: { children: ComponentChildren }) {
+export function SignedIn(
+  props: { children: ComponentChildren },
+): ComponentChildren {
   const { auth } = useClerkProvider();
 
   return auth.value.userId ? props.children : null;
 }
 
-export function SignedOut(props: { children: ComponentChildren }) {
+export function SignedOut(
+  props: { children: ComponentChildren },
+): ComponentChildren {
   const { auth } = useClerkProvider();
 
   return auth.value.userId ? null : props.children;
@@ -33,7 +37,7 @@ export function Protect(
     fallback?: ComponentChildren;
     children: ComponentChildren;
   },
-) {
+): ComponentChildren {
   const { auth } = useClerkProvider();
 
   const isUnauthorized = computed(() => {

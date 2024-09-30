@@ -1,4 +1,8 @@
-export { type AuthObject, createClerkClient } from 'npm:@clerk/backend@1.13.5';
+export {
+  type AuthObject,
+  type ClerkClient,
+  createClerkClient,
+} from 'npm:@clerk/backend@1.13.5';
 
 export type { AuthenticateRequestOptions } from 'npm:@clerk/backend@1.13.5/internal';
 

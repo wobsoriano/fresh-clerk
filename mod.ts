@@ -21,9 +21,7 @@ export const clerkPlugin = (options: ClerkPluginOptions = {}): Plugin => {
     islands: {
       baseLocation: import.meta.url,
       paths: [
-        './islands/ClerkProvider.tsx',
-        './islands/UserButton.tsx',
-        './islands/mod.ts'
+        './islands/mod.ts',
       ],
     },
   };

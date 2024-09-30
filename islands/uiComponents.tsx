@@ -1,4 +1,5 @@
 import { useRef } from 'preact/hooks';
+import type { JSX } from 'preact';
 import { useSignalEffect } from '@preact/signals';
 import { useClerkProvider } from '../hooks/mod.ts';
 import type {
@@ -28,7 +29,7 @@ interface PortalProps<T extends Record<string, any>> {
 
 export const Portal = <T extends Record<string, any>>(
   props: PortalProps<T>,
-) => {
+): JSX.Element => {
   const { clerk, loaded } = useClerkProvider();
   const el = useRef<HTMLDivElement>(null!);
 
@@ -47,7 +48,7 @@ export const Portal = <T extends Record<string, any>>(
   return <div ref={el} />;
 };
 
-export function SignIn(props: SignInProps) {
+export function SignIn(props: SignInProps): JSX.Element {
   return (
     <Portal
       component='SignIn'
@@ -56,7 +57,7 @@ export function SignIn(props: SignInProps) {
   );
 }
 
-export function SignUp(props: SignUpProps) {
+export function SignUp(props: SignUpProps): JSX.Element {
   return (
     <Portal
       component='SignUp'
@@ -65,7 +66,7 @@ export function SignUp(props: SignUpProps) {
   );
 }
 
-export function UserButton(props: UserButtonProps) {
+export function UserButton(props: UserButtonProps): JSX.Element {
   return (
     <Portal
       component='UserButton'
@@ -74,7 +75,7 @@ export function UserButton(props: UserButtonProps) {
   );
 }
 
-export function UserProfile(props: UserProfileProps) {
+export function UserProfile(props: UserProfileProps): JSX.Element {
   return (
     <Portal
       component='UserProfile'
@@ -83,7 +84,9 @@ export function UserProfile(props: UserProfileProps) {
   );
 }
 
-export function CreateOrganization(props: CreateOrganizationProps) {
+export function CreateOrganization(
+  props: CreateOrganizationProps,
+): JSX.Element {
   return (
     <Portal
       component='CreateOrganization'
@@ -92,7 +95,9 @@ export function CreateOrganization(props: CreateOrganizationProps) {
   );
 }
 
-export function OrganizationProfile(props: OrganizationProfileProps) {
+export function OrganizationProfile(
+  props: OrganizationProfileProps,
+): JSX.Element {
   return (
     <Portal
       component='OrganizationProfile'
@@ -101,7 +106,9 @@ export function OrganizationProfile(props: OrganizationProfileProps) {
   );
 }
 
-export function OrganizationSwitcher(props: OrganizationSwitcherProps) {
+export function OrganizationSwitcher(
+  props: OrganizationSwitcherProps,
+): JSX.Element {
   return (
     <Portal
       component='OrganizationSwitcher'

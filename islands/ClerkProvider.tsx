@@ -16,7 +16,7 @@ import {
   useSignal,
   useSignalEffect,
 } from '@preact/signals';
-import { createContext } from 'preact';
+import { createContext, type JSX } from 'preact';
 import { BrowserClerk, HeadlessBrowserClerk } from '../types.ts';
 import { ComponentChildren } from 'preact';
 import { LoadClerkJsScriptOptions } from '../deps.ts';
@@ -46,7 +46,7 @@ export const ClerkContext = createContext<
   } | null
 >(null);
 
-export default function ClerkProvider(props: ClerkProviderProps) {
+export default function ClerkProvider(props: ClerkProviderProps): JSX.Element {
   const clerk = useSignal<HeadlessBrowserClerk | BrowserClerk | null>(null);
   const loaded = useSignal(false);
   const resources = useSignal<Resources>({
@@ -64,7 +64,6 @@ export default function ClerkProvider(props: ClerkProviderProps) {
   const organization = computed(() => auth.value.organization);
 
   useSignalEffect(() => {
-    console.log('hello');
     async function loadClerk() {
       await loadClerkJsScript(props);
       clerk.value = (globalThis as any).Clerk;
