@@ -1,11 +1,11 @@
-import { FreshContext } from '$fresh/server.ts';
+import { defineRoute } from '$fresh/server.ts';
 import { SignIn } from '../../islands/mod.ts';
 
-export default async function Page(_req, ctx: FreshContext) {
+export default defineRoute((_req, ctx) => {
   if (ctx.state.auth.userId) {
-    return new Response('', {
+    return new Response("", {
       status: 307,
-      headers: { Location: '/profile' },
+      headers: { Location: "/profile" },
     });
   }
 
@@ -14,4 +14,4 @@ export default async function Page(_req, ctx: FreshContext) {
       <SignIn />
     </div>
   );
-}
+})

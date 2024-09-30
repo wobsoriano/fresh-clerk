@@ -173,7 +173,9 @@ This `auth` object contains a `userId` that you can use to determine if the user
 is authenticated.
 
 ```tsx
-export default function Index(ctx) {
+import { defineRoute } from '$fresh/server.ts';
+
+export default defineRoute((_req, ctx) => {
   const { userId } = ctx.state.auth;
 
   if (!userId) {
