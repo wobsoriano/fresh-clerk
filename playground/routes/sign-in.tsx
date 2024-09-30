@@ -1,8 +1,9 @@
 import { FreshContext } from 'fresh';
 import { SignIn } from 'src/islands/mod.ts';
 import { State } from 'src/server/mod.ts';
+import { define } from '../utils.ts';
 
-export default function Page(ctx: FreshContext<State>) {
+export default define.page(function Page(ctx: FreshContext<State>) {
   if (ctx.state.auth.userId) {
     return new Response('', {
       status: 307,
@@ -15,4 +16,4 @@ export default function Page(ctx: FreshContext<State>) {
       <SignIn />
     </div>
   );
-}
+})

@@ -1,5 +1,6 @@
 #!/usr/bin/env -S deno run -A --watch=playground/static/,playground/routes/
 
+import 'jsr:@std/dotenv/load';
 import { Builder } from 'fresh/dev';
 import { app } from './main.ts';
 
