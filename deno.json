@@ -1,6 +1,6 @@
 {
   "name": "@wobsoriano/clerk-fresh",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "lock": false,
   "exports": {
     ".": "./src/mod.ts",
