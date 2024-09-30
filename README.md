@@ -25,7 +25,7 @@ or via import map inside `deno.json`:
 ## Set environment variables
 
 ```sh
-PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_xxxxxxxx
+CLERK_PUBLISHABLE_KEY=pk_test_xxxxxxxx
 CLERK_SECRET_KEY=sk_test_xxxxxxx
 ```
 
