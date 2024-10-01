@@ -8,8 +8,8 @@ import { useClerkContext } from '../hooks/mod.ts';
 import { computed } from '@preact/signals';
 
 /**
- * The `<SignedIn>`` component offers authentication checks as a cross-cutting concern. Any children
- * components wrapped by a `<SignedIn>`` component will be rendered only if there's a User with an
+ * The `<SignedIn>` component offers authentication checks as a cross-cutting concern. Any children
+ * components wrapped by a `<SignedIn>` component will be rendered only if there's a User with an
  * active Session signed in your application.
  *
  * @see {@link https://clerk.com/docs/components/control/signed-in}
@@ -48,7 +48,7 @@ type ProtectProps =
   };
 
 /**
- * The <Protect> component is used for authorization. It only renders its children when the current
+ * The `<Protect>` component is used for authorization. It only renders its children when the current
  * user has the specified permission or role in the organization.
  *
  * @see {@link https://clerk.com/docs/components/protect}
