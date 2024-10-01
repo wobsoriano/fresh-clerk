@@ -1,9 +1,4 @@
-import {
-  type AuthenticateRequestOptions,
-  type AuthObject,
-  makeAuthObjectSerializable,
-  stripPrivateDataFromObject,
-} from '../deps.ts';
+import { type AuthenticateRequestOptions, type AuthObject } from '../deps.ts';
 import { FreshContext, MiddlewareFn } from 'fresh';
 import { clerkClient } from './clerkClient.ts';
 import * as constants from './constants.ts';
@@ -36,10 +31,6 @@ export function clerkMiddleware<T>(
     const typedCtx = ctx as FreshContext<State>;
 
     typedCtx.state.auth = auth;
-    // @ts-expect-error initialState is hidden from the types as it's a private prop
-    typedCtx.state.__clerk_ssr_state = makeAuthObjectSerializable(
-      stripPrivateDataFromObject(auth),
-    );
 
     const resp = await typedCtx.next();
 
