@@ -51,6 +51,8 @@ const Portal = <T extends Record<string, any>>(
 };
 
 /**
+ * The `<SignIn />` component renders a UI for signing in users.
+ *
  * @see {@link https://clerk.com/docs/components/authentication/sign-in}
  */
 export function SignIn(props: SignInProps): JSX.Element {
@@ -63,6 +65,8 @@ export function SignIn(props: SignInProps): JSX.Element {
 }
 
 /**
+ * The `<SignUp />` component renders a UI for signup up users.
+ *
  * @see {@link https://clerk.com/docs/components/authentication/sign-up}
  */
 export function SignUp(props: SignUpProps): JSX.Element {
