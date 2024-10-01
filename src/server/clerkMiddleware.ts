@@ -4,7 +4,7 @@ import {
   makeAuthObjectSerializable,
   stripPrivateDataFromObject,
 } from '../deps.ts';
-import { MiddlewareFn } from 'fresh';
+import { FreshContext, MiddlewareFn } from 'fresh';
 import { clerkClient } from './clerkClient.ts';
 import * as constants from './constants.ts';
 
@@ -12,7 +12,7 @@ export interface State {
   auth: AuthObject;
 }
 
-export function clerkMiddleware<T = State>(
+export function clerkMiddleware<T>(
   options: AuthenticateRequestOptions,
 ): MiddlewareFn<T> {
   return async (ctx) => {
@@ -32,13 +32,16 @@ export function clerkMiddleware<T = State>(
     }
 
     const auth = requestState.toAuth();
-    ctx.state.auth = auth;
+
+    const typedCtx = ctx as FreshContext<State>
+
+    typedCtx.state.auth = auth;
     // @ts-expect-error initialState is hidden from the types as it's a private prop
-    ctx.state.__clerk_ssr_state = makeAuthObjectSerializable(
+    typedCtx.state.__clerk_ssr_state = makeAuthObjectSerializable(
       stripPrivateDataFromObject(auth),
     );
 
-    const resp = await ctx.next();
+    const resp = await typedCtx.next();
 
     requestState.headers.forEach((value, key) => {
       resp.headers.set(key, value);
