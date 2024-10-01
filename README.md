@@ -7,7 +7,7 @@ Community package that integrates Clerk with Deno and
 
 You can get started with Fresh Clerk from JSR using the following command:
 
-```bash
+```sh
 deno add jsr:@wobsoriano/fresh-clerk
 ```
 
