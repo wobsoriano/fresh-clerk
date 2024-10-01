@@ -44,6 +44,7 @@ All Clerk components, islands and hooks must be children of the
 ```ts
 // _app.tsx
 import { ClerkProvider } from 'jsr:@wobsoriano/fresh-clerk/islands';
+import { buildClerkProps } from 'jsr:@wobsoriano/fresh-clerk/utils';
 
 export default function App({ Component, state }) {
   return (
@@ -52,7 +53,7 @@ export default function App({ Component, state }) {
     <body>
       <ClerkProvider
         {/* Pass the state to enable SSR support */}
-        {...state}
+        {...buildClerkProps(state.auth)}
         publishableKey={Deno.env.get('CLERK_PUBLISHABLE_KEY')}
       >
         <Component />
