@@ -7,6 +7,9 @@ export interface State {
   auth: AuthObject;
 }
 
+/**
+ * The `clerkMiddleware()` helper integrates Clerk authentication into your Fresh application through Middleware.
+ */
 export function clerkMiddleware<T>(
   options: AuthenticateRequestOptions,
 ): MiddlewareFn<T> {
