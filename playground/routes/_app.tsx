@@ -14,7 +14,7 @@ export default function App({ Component, state }: PageProps<State>) {
       </head>
       <body>
         <ClerkProvider
-          {...buildClerkProps(state.auth)}
+          {...buildClerkProps(state)}
           publishableKey={Deno.env.get('CLERK_PUBLISHABLE_KEY')!}
         >
           <Component />
