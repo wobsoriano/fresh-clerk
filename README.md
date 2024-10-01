@@ -53,7 +53,7 @@ export default function App({ Component, state }) {
     <body>
       <ClerkProvider
         {/* Build required props for SSR */}
-        {...buildClerkProps(state.auth)}
+        {...buildClerkProps(state)}
         publishableKey={Deno.env.get('CLERK_PUBLISHABLE_KEY')}
       >
         <Component />
