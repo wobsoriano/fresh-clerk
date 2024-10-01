@@ -52,7 +52,7 @@ type ProtectProps =
  * user has the specified permission or role in the organization.
  *
  * @see {@link https://clerk.com/docs/components/protect}
-*/
+ */
 export function Protect(
   props: ProtectProps & {
     fallback?: ComponentChildren;
