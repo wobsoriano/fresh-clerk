@@ -1,4 +1,4 @@
-import { SignOutButton } from 'src/islands/mod.ts';
+import { SignOutButton } from 'fresh-clerk/islands';
 
 export default function CustomSignOutButton() {
   return (

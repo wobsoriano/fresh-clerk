@@ -1,6 +1,6 @@
 import { App } from 'fresh';
 import type { AuthenticateRequestOptions } from './deps.ts';
-import { clerkMiddleware } from './server/mod.ts';
+import { clerkMiddleware, State } from './server/mod.ts';
 import * as clerkIslands from './islands/mod.ts';
 
 /**
@@ -14,12 +14,12 @@ export interface ClerkPluginOptions {
   middlewareOptions?: AuthenticateRequestOptions;
 }
 
-export function clerkPlugin<T>(
+export function clerkPlugin<T = State>(
   app: App<T>,
   options: ClerkPluginOptions = {},
 ) {
   // Register middleware
-  app.use(clerkMiddleware(options.middlewareOptions!) as any);
+  app.use(clerkMiddleware(options.middlewareOptions ?? {}));
 
   // Register islands
   const pathname = new URL('./islands/mod.ts', import.meta.url).pathname;

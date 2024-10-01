@@ -1,4 +1,4 @@
-import { SignedIn } from 'src/components/mod.ts';
+import { SignedIn } from 'fresh-clerk/components';
 import { define } from '../utils.ts';
 
 export default define.page(function Page() {

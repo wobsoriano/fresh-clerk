@@ -1,7 +1,7 @@
-import { UserButton } from 'src/islands/mod.ts';
+import { UserButton } from 'fresh-clerk/islands';
 import CustomSignOutButton from '../islands/CustomSignOutButton.tsx';
 import { FreshContext } from 'fresh';
-import { State } from 'src/server/mod.ts';
+import { State } from 'fresh-clerk/server';
 import { define } from '../utils.ts';
 
 export default define.page(function Page(ctx: FreshContext<State>) {

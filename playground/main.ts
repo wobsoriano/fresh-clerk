@@ -1,13 +1,12 @@
 import { App, fsRoutes, staticFiles } from 'fresh';
-import { type State } from 'src/server/mod.ts';
-import { clerkPlugin } from 'src/mod.ts';
+import { type State } from 'fresh-clerk/server';
+import { clerkPlugin } from 'fresh-clerk/plugin';
 
-export const app = new App<State>();
+export const app = new App<State>({ root: import.meta.url });
 app.use(staticFiles());
 clerkPlugin(app);
 
 await fsRoutes(app, {
-  dir: './',
   loadIsland: (path) => import(`./islands/${path}`),
   loadRoute: (path) => import(`./routes/${path}`),
 });

@@ -4,7 +4,7 @@ import {
   makeAuthObjectSerializable,
   stripPrivateDataFromObject,
 } from '../deps.ts';
-import { createDefine, MiddlewareFn } from 'fresh';
+import { MiddlewareFn } from 'fresh';
 import { clerkClient } from './clerkClient.ts';
 import * as constants from './constants.ts';
 
@@ -12,12 +12,10 @@ export interface State {
   auth: AuthObject;
 }
 
-const define = createDefine<State>();
-
-export function clerkMiddleware(
+export function clerkMiddleware<T = State>(
   options: AuthenticateRequestOptions,
-): MiddlewareFn<State> {
-  const middleware = define.middleware(async (ctx) => {
+): MiddlewareFn<T> {
+  return async (ctx) => {
     const requestState = await clerkClient.authenticateRequest(ctx.req, {
       ...options,
       secretKey: options?.secretKey ?? constants.SECRET_KEY,
@@ -47,7 +45,5 @@ export function clerkMiddleware(
     });
 
     return resp;
-  });
-
-  return middleware;
+  };
 }
