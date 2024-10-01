@@ -1,7 +1,7 @@
 {
   "name": "@wobsoriano/fresh-clerk",
   "nodeModulesDir": "auto",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "license": "MIT",
   "exports": {
     ".": "./src/mod.ts",
