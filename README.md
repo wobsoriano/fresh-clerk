@@ -176,14 +176,19 @@ is authenticated.
 ```tsx
 import { define } from '../utils.ts';
 
-export default define.page(function Page(ctx) {
-  if (!ctx.state.auth.userId) {
-    return new Response('', {
-      status: 307,
-      headers: { Location: '/sign-in' },
-    });
-  }
+export const handlers = define.handlers({
+  GET({ redirect, state }) {
+    if (!state.auth.userId) {
+      return redirect('/sign-in');
+    }
 
+    return {
+      data: {},
+    };
+  },
+});
+
+export default define.page(function Page() {
   return (
     <div>
       <h1>Index route</h1>

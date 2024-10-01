@@ -1,17 +1,20 @@
 import { UserButton } from 'fresh-clerk/islands';
 import CustomSignOutButton from '../islands/CustomSignOutButton.tsx';
-import { FreshContext } from 'fresh';
-import { State } from 'fresh-clerk/server';
 import { define } from '../utils.ts';
 
-export default define.page(function Page(ctx: FreshContext<State>) {
-  if (!ctx.state.auth.userId) {
-    return new Response('', {
-      status: 307,
-      headers: { Location: '/sign-in' },
-    });
-  }
+export const handlers = define.handlers({
+  GET(ctx) {
+    if (!ctx.state.auth.userId) {
+      return ctx.redirect('/sign-in');
+    }
 
+    return {
+      data: {},
+    };
+  },
+});
+
+export default define.page<typeof handlers>(function Page() {
   return (
     <div>
       <UserButton />
