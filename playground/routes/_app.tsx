@@ -1,6 +1,7 @@
 import { type PageProps } from 'fresh';
 import { ClerkProvider } from 'fresh-clerk/islands';
 import { State } from 'fresh-clerk/server';
+import { buildClerkProps } from 'fresh-clerk/utils';
 
 export default function App({ Component, state }: PageProps<State>) {
   return (
@@ -13,6 +14,7 @@ export default function App({ Component, state }: PageProps<State>) {
       </head>
       <body>
         <ClerkProvider
+          {...buildClerkProps(state)}
           publishableKey={Deno.env.get('CLERK_PUBLISHABLE_KEY')!}
         >
           <Component />

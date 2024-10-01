@@ -33,7 +33,7 @@ export function clerkMiddleware<T>(
 
     const auth = requestState.toAuth();
 
-    const typedCtx = ctx as FreshContext<State>
+    const typedCtx = ctx as FreshContext<State>;
 
     typedCtx.state.auth = auth;
     // @ts-expect-error initialState is hidden from the types as it's a private prop
