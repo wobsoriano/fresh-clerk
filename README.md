@@ -52,7 +52,7 @@ export default function App({ Component, state }) {
     {/* head */}
     <body>
       <ClerkProvider
-        {/* Pass the state to enable SSR support */}
+        {/* Build required props for SSR */}
         {...buildClerkProps(state.auth)}
         publishableKey={Deno.env.get('CLERK_PUBLISHABLE_KEY')}
       >
