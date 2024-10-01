@@ -54,7 +54,7 @@ export default function ClerkProvider(props: ClerkProviderProps): JSX.Element {
     organization: undefined,
   });
   // @ts-expect-error initialState is hidden from the types as it's a private prop
-  const initialState = props.__clerk_ssr_state;
+  const initialState = props.initialState;
   const auth = computed(() =>
     deriveState(loaded.value, resources.value, initialState)
   );
