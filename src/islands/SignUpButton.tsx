@@ -20,6 +20,11 @@ export type SignUpButtonProps =
     | 'signInFallbackRedirectUrl'
   >;
 
+/**
+ * The `<SignOutButton>` component is a button that signs a user out.
+ *
+ * @see {@link https://clerk.com/docs/components/unstyled/sign-out-button}
+ */
 export default function SignUpButton(props: SignUpButtonProps): JSX.Element {
   const { clerk } = useClerkContext();
   const {

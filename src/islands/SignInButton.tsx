@@ -17,6 +17,11 @@ export type SignInButtonProps =
     | 'signUpFallbackRedirectUrl'
   >;
 
+/**
+ * The `<SignInButton>` component is a button that links to the sign-in page or displays the sign-in modal.
+ *
+ * @see {@link https://clerk.com/docs/components/unstyled/sign-in-button}
+ */
 export default function SignInButton(props: SignInButtonProps): JSX.Element {
   const { clerk } = useClerkContext();
   const {

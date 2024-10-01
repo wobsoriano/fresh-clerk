@@ -6,6 +6,11 @@ type SignOutButtonProps = SignOutOptions & {
   children?: VNode;
 };
 
+/**
+ * The `<SignUpButton>` component is a button that links to the sign-up page or displays the sign-up modal.
+ *
+ * @see {@link https://clerk.com/docs/components/unstyled/sign-up-button}
+ */
 export default function SignOutButton(props: SignOutButtonProps): JSX.Element {
   const { clerk } = useClerkContext();
 
