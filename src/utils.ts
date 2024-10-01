@@ -4,6 +4,7 @@ import {
   makeAuthObjectSerializable,
   stripPrivateDataFromObject,
 } from './deps.ts';
+import type { State } from './server/mod.ts';
 
 /**
  * Builds the necessary props for Clerk SSR support in Fresh applications.
@@ -30,11 +31,11 @@ import {
  *   );
  * }
  */
-export function buildClerkProps<State>(state: FreshContext<State>): {
+export function buildClerkProps<T>(state: FreshContext<T>['state']): {
   initialState: InitialState;
 } {
   const initialState = makeAuthObjectSerializable(
-    stripPrivateDataFromObject((state as any).auth),
+    stripPrivateDataFromObject((state as FreshContext<State>['state']).auth),
   );
 
   return {
