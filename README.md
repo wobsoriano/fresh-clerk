@@ -45,8 +45,9 @@ All Clerk components, islands and hooks must be children of the
 // _app.tsx
 import { ClerkProvider } from 'jsr:@wobsoriano/fresh-clerk/islands';
 import { buildClerkProps } from 'jsr:@wobsoriano/fresh-clerk/utils';
+import type { State } from 'jsr:@wobsoriano/fresh-clerk/server';
 
-export default function App({ Component, state }) {
+export default function App({ Component, state }: PageProps<State>) {
   return (
     {/* html */}
     {/* head */}
@@ -136,8 +137,9 @@ authentication state.
 ```tsx
 import { SignedIn, SignedOut } from 'jsr:@wobsoriano/fresh-clerk/components';
 import { SignOutButton, UserButton } from 'jsr:@wobsoriano/fresh-clerk/islands';
+import { define } from '../utils.ts';
 
-export default function Index() {
+export default define.page(function Page() {
   return (
     <div>
       <h1>Index Route</h1>
@@ -172,6 +174,8 @@ This `auth` object contains a `userId` that you can use to determine if the user
 is authenticated.
 
 ```tsx
+import { define } from '../utils.ts';
+
 export default define.page(function Page(ctx) {
   if (!ctx.state.auth.userId) {
     return new Response('', {
