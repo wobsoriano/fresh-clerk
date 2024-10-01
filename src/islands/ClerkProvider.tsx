@@ -44,6 +44,12 @@ export type ClerkContextType = {
 
 export const ClerkContext = createContext<ClerkContextType | null>(null);
 
+/**
+ * The `<ClerkProvider>` component wraps your Fresh application to provide
+ * active session and user context to Clerk's hooks and other components.
+ *
+ * @see {@link https://clerk.com/docs/components/clerk-provider}
+ */
 export default function ClerkProvider(props: ClerkProviderProps): JSX.Element {
   const clerk = useSignal<HeadlessBrowserClerk | BrowserClerk | null>(null);
   const loaded = useSignal(false);
