@@ -1,5 +1,6 @@
 {
   "name": "@wobsoriano/fresh-clerk",
+  "nodeModulesDir": "auto",
   "version": "0.0.5",
   "license": "MIT",
   "exports": {
