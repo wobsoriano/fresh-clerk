@@ -34,7 +34,8 @@
     "exclude": [
       "playground",
       ".zed",
-      ".github"
+      ".github",
+      "deno.lock"
     ]
   },
   "imports": {
