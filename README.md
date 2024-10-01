@@ -5,11 +5,21 @@ Community package that integrates Clerk with Deno and
 
 ## Installation
 
-Fresh Clerk is available on [JSR](https://jsr.io/@oak/oak). To use it, import
-into a module:
+You can get started with Fresh Clerk from JSR using the following command:
 
-```ts
-import { clerkPlugin } from 'jsr:@wobsoriano/fresh-clerk';
+```bash
+deno add jsr:@wobsoriano/fresh-clerk
+```
+
+The above command will add the following to your `deno.json` under `imports`
+key:
+
+```json
+{
+  "imports": {
+    "@wobsoriano/fresh-clerk": "jsr:@wobsoriano/fresh-clerk^0.0.10"
+  }
+}
 ```
 
 ## Set environment variables
@@ -26,7 +36,7 @@ Enable the plugin inside your `dev.ts` file:
 ```ts
 import { Builder } from 'fresh/dev';
 import { app } from './main.ts';
-import { clerkPlugin } from 'jsr:@wobsoriano/fresh-clerk/plugin';
+import { clerkPlugin } from '@wobsoriano/fresh-clerk/plugin';
 
 const builder = new Builder();
 
@@ -43,9 +53,9 @@ All Clerk components, islands and hooks must be children of the
 
 ```ts
 // _app.tsx
-import { ClerkProvider } from 'jsr:@wobsoriano/fresh-clerk/islands';
-import { buildClerkProps } from 'jsr:@wobsoriano/fresh-clerk/utils';
-import type { State } from 'jsr:@wobsoriano/fresh-clerk/server';
+import { ClerkProvider } from '@wobsoriano/fresh-clerk/islands';
+import { buildClerkProps } from '@wobsoriano/fresh-clerk/utils';
+import type { State } from '@wobsoriano/fresh-clerk/server';
 
 export default function App({ Component, state }: PageProps<State>) {
   return (
@@ -103,7 +113,7 @@ demonstrates a basic example of how you could use the
 method to retrieve a session token for fetching data from an external resource.
 
 ```tsx
-import { useClerkContext } from 'jsr:@wobsoriano/fresh-clerk/hooks';
+import { useClerkContext } from '@wobsoriano/fresh-clerk/hooks';
 
 export default function SomeIsland() {
   const { auth, session } = useClerkContext();
@@ -135,8 +145,8 @@ components are used to control the visibility of your pages based on the user's
 authentication state.
 
 ```tsx
-import { SignedIn, SignedOut } from 'jsr:@wobsoriano/fresh-clerk/components';
-import { SignOutButton, UserButton } from 'jsr:@wobsoriano/fresh-clerk/islands';
+import { SignedIn, SignedOut } from '@wobsoriano/fresh-clerk/components';
+import { SignOutButton, UserButton } from '@wobsoriano/fresh-clerk/islands';
 import { define } from '../utils.ts';
 
 export default define.page(function Page() {
