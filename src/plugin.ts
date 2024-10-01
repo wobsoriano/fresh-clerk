@@ -14,6 +14,10 @@ export interface ClerkPluginOptions {
   middlewareOptions?: AuthenticateRequestOptions;
 }
 
+/**
+ * The plugin that will add a middleware built on top of Clerk backend SDK
+ * and bundle the Clerk frontend islands.
+ */
 export function clerkPlugin<T = State>(
   app: App<T>,
   options: ClerkPluginOptions = {},
