@@ -6,6 +6,7 @@ import {
 } from '../deps.ts';
 import { useClerkContext } from '../hooks/mod.ts';
 import { computed } from '@preact/signals';
+import { JSX } from 'preact';
 
 /**
  * The `<SignedIn>` component offers authentication checks as a cross-cutting concern. Any children
@@ -16,10 +17,12 @@ import { computed } from '@preact/signals';
  */
 export function SignedIn(
   props: { children: ComponentChildren },
-): ComponentChildren {
+): JSX.Element {
   const { auth } = useClerkContext();
 
-  return auth.value.userId ? props.children : null;
+  const userId = computed(() => auth.value.userId);
+
+  return userId.value ? <>{props.children}</> : <></>;
 }
 
 /**
@@ -31,10 +34,12 @@ export function SignedIn(
  */
 export function SignedOut(
   props: { children: ComponentChildren },
-): ComponentChildren {
+): JSX.Element {
   const { auth } = useClerkContext();
 
-  return auth.value.userId ? null : props.children;
+  const userId = computed(() => auth.value.userId);
+
+  return userId.value ? <></> : <>{props.children}</>;
 }
 
 type ProtectProps =
@@ -58,7 +63,7 @@ export function Protect(
     fallback?: ComponentChildren;
     children: ComponentChildren;
   },
-): ComponentChildren {
+): JSX.Element {
   const { auth, session } = useClerkContext();
 
   const isUnauthorized = computed(() => {
@@ -71,5 +76,5 @@ export function Protect(
         ));
   });
 
-  return isUnauthorized.value ? props.fallback : props.children;
+  return isUnauthorized.value ? <>{props.fallback}</> : <>{props.children}</>;
 }

@@ -9,3 +9,8 @@ export interface BrowserClerk extends HeadlessBrowserClerk {
   onComponentsReady: Promise<void>;
   components: unknown;
 }
+
+/**
+ * Types that are not yet defined or need to be fixed.
+ */
+export type FixMe = any;

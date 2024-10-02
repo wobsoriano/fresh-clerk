@@ -1,4 +1,4 @@
-import { SignedIn } from 'fresh-clerk/components';
+import { SignedIn, SignedOut } from 'fresh-clerk/components';
 import { define } from '../utils.ts';
 
 export default define.page(function Page() {
@@ -21,6 +21,10 @@ export default define.page(function Page() {
       <SignedIn>
         <p>I am signed in</p>
       </SignedIn>
+
+      <SignedOut>
+        <p>I am signed out</p>
+      </SignedOut>
     </div>
   );
 });
