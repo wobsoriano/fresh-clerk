@@ -20,9 +20,7 @@ export function SignedIn(
 ): JSX.Element {
   const { auth } = useClerkContext();
 
-  const userId = computed(() => auth.value.userId);
-
-  return userId.value ? <>{props.children}</> : <></>;
+  return auth.value.userId ? <>{props.children}</> : <></>;
 }
 
 /**
@@ -37,9 +35,7 @@ export function SignedOut(
 ): JSX.Element {
   const { auth } = useClerkContext();
 
-  const userId = computed(() => auth.value.userId);
-
-  return userId.value ? <></> : <>{props.children}</>;
+  return auth.value.userId ? <></> : <>{props.children}</>;
 }
 
 type ProtectProps =
