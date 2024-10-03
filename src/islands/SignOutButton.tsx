@@ -1,10 +1,9 @@
-import { cloneElement, type JSX, type VNode } from 'preact';
+import { cloneElement, type JSX } from 'preact';
 import { SignOutOptions } from '../deps.ts';
 import { useClerkContext } from '../hooks/mod.ts';
+import type { ButtonProps } from '../types.ts';
 
-type SignOutButtonProps = SignOutOptions & {
-  children?: VNode;
-};
+type SignOutButtonProps = SignOutOptions & Omit<ButtonProps, 'mode'>;
 
 /**
  * The `<SignUpButton>` component is a button that links to the sign-up page or displays the sign-up modal.

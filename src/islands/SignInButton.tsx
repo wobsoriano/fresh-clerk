@@ -1,11 +1,7 @@
-import { cloneElement, type JSX, type VNode } from 'preact';
+import { cloneElement, type JSX } from 'preact';
 import { SignInProps } from '../deps.ts';
 import { useClerkContext } from '../hooks/mod.ts';
-
-type ButtonProps = {
-  mode?: 'redirect' | 'modal';
-  children?: VNode;
-};
+import type { ButtonProps } from '../types.ts';
 
 export type SignInButtonProps =
   & ButtonProps
