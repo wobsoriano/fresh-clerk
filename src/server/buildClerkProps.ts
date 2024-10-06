@@ -3,8 +3,8 @@ import {
   type InitialState,
   makeAuthObjectSerializable,
   stripPrivateDataFromObject,
-} from './deps.ts';
-import type { State } from './server/mod.ts';
+} from '../deps.ts';
+import type { State } from './clerkMiddleware.ts';
 
 /**
  * Builds the necessary props for Clerk SSR support in Fresh applications.
@@ -14,7 +14,7 @@ import type { State } from './server/mod.ts';
  * @param state - The state object from Fresh's PageProps
  *
  * @example
- * import { buildClerkProps } from 'fresh-clerk/utils';
+ * import { buildClerkProps } from 'fresh-clerk/server';
  *
  * export default function App({ Component, state }: PageProps<State>) {
  *   return (

@@ -8,8 +8,7 @@
     "./hooks": "./src/hooks/mod.ts",
     "./components": "./src/components/mod.ts",
     "./islands": "./src/islands/mod.ts",
-    "./server": "./src/server/mod.ts",
-    "./utils": "./src/utils.ts"
+    "./server": "./src/server/mod.ts"
   },
   "tasks": {
     "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",

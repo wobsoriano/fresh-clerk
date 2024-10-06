@@ -14,8 +14,7 @@
     "fresh-clerk/components": "../src/components/mod.ts",
     "fresh-clerk/server": "../src/server/mod.ts",
     "fresh-clerk/hooks": "../src/hooks/mod.ts",
-    "fresh-clerk/plugin": "../src/plugin.ts",
-    "fresh-clerk/utils": "../src/utils.ts"
+    "fresh-clerk/plugin": "../src/plugin.ts"
   },
   "compilerOptions": {
     "lib": [
