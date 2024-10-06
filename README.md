@@ -54,8 +54,7 @@ All Clerk components, islands and hooks must be children of the
 ```ts
 // _app.tsx
 import { ClerkProvider } from '@wobsoriano/fresh-clerk/islands';
-import { buildClerkProps } from '@wobsoriano/fresh-clerk/utils';
-import type { State } from '@wobsoriano/fresh-clerk/server';
+import { buildClerkProps, type State } from '@wobsoriano/fresh-clerk/server';
 
 export default function App({ Component, state }: PageProps<State>) {
   return (
