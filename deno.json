@@ -12,7 +12,7 @@
   },
   "tasks": {
     "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
-    "play": "deno task --cwd=playground dev",
+    "play": "deno task --cwd=playground dev tmp:fix",
     "release": "deno run -A npm:bumpp --ignore-scripts"
   },
   "lint": {

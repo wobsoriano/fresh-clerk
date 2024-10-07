@@ -1,7 +1,7 @@
 {
   "lock": false,
   "tasks": {
-    "dev": "deno run -A --watch=static/,routes/,../src dev.ts dev",
+    "dev": "deno run -A --watch=static/,routes/,../src dev.ts",
     "build": "deno run -A dev.ts build",
     "start": "deno run -A main.ts",
     "update": "deno run -A -r jsr:@fresh/update ."
