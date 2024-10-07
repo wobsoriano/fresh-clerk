@@ -28,6 +28,7 @@ export function clerkPlugin<T = State>(
   // Register islands
   let url: string | URL = new URL('./islands/mod.ts', import.meta.url);
 
+  // Temp hack to make it work in dev mode
   if (Deno.args.includes('dev')) {
     url = url.pathname
   }
