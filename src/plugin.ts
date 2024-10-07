@@ -26,7 +26,12 @@ export function clerkPlugin<T = State>(
   app.use(clerkMiddleware(options.middlewareOptions ?? {}));
 
   // Register islands
-  const url = new URL('./islands/mod.ts', import.meta.url);
+  let url: string | URL = new URL('./islands/mod.ts', import.meta.url);
+
+  if (Deno.args.includes('dev')) {
+    url = url.pathname
+  }
+
   for (const key of Object.keys(clerkIslands)) {
     app.island(url, key, clerkIslands[key as keyof typeof clerkIslands]);
   }
