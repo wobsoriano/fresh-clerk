@@ -15,8 +15,3 @@ export type ButtonProps = {
   mode?: 'redirect' | 'modal';
   children?: VNode;
 };
-
-declare global {
-  // deno-lint-ignore no-var
-  var Clerk: HeadlessBrowserClerk | BrowserClerk;
-}

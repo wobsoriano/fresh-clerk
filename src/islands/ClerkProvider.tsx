@@ -72,8 +72,10 @@ export default function ClerkProvider(props: ClerkProviderProps): JSX.Element {
   useSignalEffect(() => {
     async function loadClerk() {
       await loadClerkJsScript(props);
-      clerk.value = globalThis.Clerk;
-      await clerk.value!.load();
+      clerk.value = (globalThis as unknown as {
+        Clerk: HeadlessBrowserClerk | BrowserClerk;
+      }).Clerk;
+      await clerk.value.load();
       loaded.value = true;
       clerk.value.addListener((payload) => resources.value = payload);
     }
