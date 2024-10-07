@@ -30,7 +30,7 @@ export function clerkPlugin<T = State>(
 
   // Temp hack to make it work in dev mode
   if (Deno.args.includes('tmp:fix')) {
-    url = url.pathname
+    url = url.pathname;
   }
 
   for (const key of Object.keys(clerkIslands)) {

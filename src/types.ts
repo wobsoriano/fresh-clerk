@@ -16,7 +16,7 @@ export type ButtonProps = {
   children?: VNode;
 };
 
-/**
- * Types that are not yet defined or need to be fixed.
- */
-export type FixMe = any;
+declare global {
+  // deno-lint-ignore no-var
+  var Clerk: HeadlessBrowserClerk | BrowserClerk;
+}
