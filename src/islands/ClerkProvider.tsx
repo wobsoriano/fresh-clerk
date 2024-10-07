@@ -10,8 +10,8 @@ import type {
   UserResource,
 } from '../deps.ts';
 import {
-  computed,
   type Signal,
+  useComputed,
   useSignal,
   useSignalEffect,
 } from '@preact/signals';
@@ -61,13 +61,13 @@ export default function ClerkProvider(props: ClerkProviderProps): JSX.Element {
   });
   // @ts-expect-error initialState is hidden from the types as it's a private prop
   const initialState = props.initialState;
-  const auth = computed(() =>
+  const auth = useComputed(() =>
     deriveState(loaded.value, resources.value, initialState)
   );
-  const client = computed(() => resources.value.client);
-  const session = computed(() => auth.value.session);
-  const user = computed(() => auth.value.user);
-  const organization = computed(() => auth.value.organization);
+  const client = useComputed(() => resources.value.client);
+  const session = useComputed(() => auth.value.session);
+  const user = useComputed(() => auth.value.user);
+  const organization = useComputed(() => auth.value.organization);
 
   useSignalEffect(() => {
     async function loadClerk() {
