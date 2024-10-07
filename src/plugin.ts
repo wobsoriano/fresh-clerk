@@ -26,8 +26,8 @@ export function clerkPlugin<T = State>(
   app.use(clerkMiddleware(options.middlewareOptions ?? {}));
 
   // Register islands
-  const pathname = new URL('./islands/mod.ts', import.meta.url).pathname;
+  const url = new URL('./islands/mod.ts', import.meta.url);
   for (const key of Object.keys(clerkIslands)) {
-    app.island(pathname, key, clerkIslands[key as keyof typeof clerkIslands]);
+    app.island(url, key, clerkIslands[key as keyof typeof clerkIslands]);
   }
 }
