@@ -17,7 +17,7 @@ key:
 ```json
 {
   "imports": {
-    "@jsrob/fresh-clerk": "jsr:@jsrob/fresh-clerk^0.0.10"
+    "@jsrob/fresh-clerk": "jsr:@jsrob/fresh-clerk^0.0.1-beta.1"
   }
 }
 ```
