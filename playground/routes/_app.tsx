@@ -1,9 +1,8 @@
-import { type PageProps } from 'fresh';
 import { ClerkProvider } from 'fresh-clerk/islands';
-import { State } from 'fresh-clerk/server';
 import { buildClerkProps } from 'fresh-clerk/server';
+import { define } from '../utils.ts';
 
-export default function App({ Component, state }: PageProps<State>) {
+export default define.page(function App({ Component, state }) {
   return (
     <html>
       <head>
@@ -22,4 +21,4 @@ export default function App({ Component, state }: PageProps<State>) {
       </body>
     </html>
   );
-}
+});
