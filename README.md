@@ -11,17 +11,6 @@ You can get started with Fresh Clerk from JSR using the following command:
 deno add jsr:@jsrob/fresh-clerk
 ```
 
-The above command will add the following to your `deno.json` under `imports`
-key:
-
-```json
-{
-  "imports": {
-    "@jsrob/fresh-clerk": "jsr:@jsrob/fresh-clerk^0.0.1-beta.1"
-  }
-}
-```
-
 ## Set environment variables
 
 ```sh
