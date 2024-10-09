@@ -1,6 +1,6 @@
 {
-  "name": "@wobsoriano/fresh-clerk",
-  "version": "0.0.17",
+  "name": "@jsrob/fresh-clerk",
+  "version": "0.0.0",
   "license": "MIT",
   "exports": {
     ".": "./src/mod.ts",
