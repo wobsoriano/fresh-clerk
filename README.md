@@ -174,7 +174,7 @@ is authenticated.
 ```tsx
 import { define } from '../utils.ts';
 
-export const handlers = define.handlers({
+export const handler = define.handlers({
   GET({ redirect, state }) {
     if (!state.auth.userId) {
       return redirect('/sign-in');

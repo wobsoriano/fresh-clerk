@@ -2,7 +2,7 @@ import { UserButton } from 'fresh-clerk/islands';
 import CustomSignOutButton from '../islands/CustomSignOutButton.tsx';
 import { define } from '../utils.ts';
 
-export const handlers = define.handlers({
+export const handler = define.handlers({
   GET(ctx) {
     if (!ctx.state.auth.userId) {
       return ctx.redirect('/sign-in');
@@ -14,7 +14,7 @@ export const handlers = define.handlers({
   },
 });
 
-export default define.page<typeof handlers>(function Page() {
+export default define.page<typeof handler>(function Page() {
   return (
     <div>
       <UserButton />

@@ -24,11 +24,13 @@ const components = [
   'OrganizationList',
 ] as const;
 
+// deno-lint-ignore no-explicit-any
 interface PortalProps<T extends Record<string, any>> {
   component: typeof components[number];
   props?: T;
 }
 
+// deno-lint-ignore no-explicit-any
 const Portal = <T extends Record<string, any>>(
   props: PortalProps<T>,
 ): JSX.Element => {
