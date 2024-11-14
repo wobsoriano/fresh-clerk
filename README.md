@@ -81,6 +81,7 @@ export default function App({ Component, state }: PageProps<State>) {
 - `<OrganizationProfile>` (island)
 - `<OrganizationSwitcher>` (island)
 - `<CreateOrganization>` (island)
+- `<GoogleOneTap>` (island)
 
 ## Signals
 
