@@ -3,6 +3,9 @@
 Community package that integrates Clerk with Deno and
 [Fresh](https://fresh.deno.dev/) 🍋
 
+> [!NOTE]  
+> This package requires Fresh 2.0
+
 ## Installation
 
 You can get started with Fresh Clerk from JSR using the following command:
