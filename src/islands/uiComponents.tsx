@@ -32,7 +32,7 @@ interface OpenProps {
   props?: AnyObject;
 }
 
-export const withClerk = <P extends { clerk: LoadedClerk }>(
+const withClerk = <P extends { clerk: LoadedClerk }>(
   Component: ComponentType<P>,
 ) => {
   const HOC = (props: Without<P, 'clerk'>): JSX.Element | null => {
