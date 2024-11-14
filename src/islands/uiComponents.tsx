@@ -34,8 +34,8 @@ interface OpenProps {
 
 const withClerk = <P extends { clerk: LoadedClerk }>(
   Component: ComponentType<P>,
-) => {
-  const HOC = (props: Without<P, 'clerk'>): JSX.Element | null => {
+): (props: Without<P, 'clerk'>) => JSX.Element | null => {
+  const HOC = (props: Without<P, 'clerk'>) => {
     const { clerk, loaded } = useClerkContext();
 
     if (!loaded.value) {
@@ -114,13 +114,17 @@ class Portal extends Component<MountProps | OpenProps> {
   }
 }
 
+type ClerkUIComponent<T> = (
+  props: Without<WithClerkProp<T>, 'clerk'>,
+) => JSX.Element | null;
+
 /**
  * The `<SignIn />` component renders a UI for signing in users.
  *
  * @see {@link https://clerk.com/docs/components/authentication/sign-in}
  */
-export const SignIn = withClerk(
-  ({ clerk, ...props }: WithClerkProp<SignInProps>): JSX.Element => {
+export const SignIn: ClerkUIComponent<SignInProps> = withClerk(
+  ({ clerk, ...props }) => {
     return (
       <Portal
         mount={clerk.mountSignIn}
@@ -137,8 +141,8 @@ export const SignIn = withClerk(
  *
  * @see {@link https://clerk.com/docs/components/authentication/sign-up}
  */
-export const SignUp = withClerk(
-  ({ clerk, ...props }: WithClerkProp<SignUpProps>): JSX.Element => {
+export const SignUp: ClerkUIComponent<SignUpProps> = withClerk(
+  ({ clerk, ...props }) => {
     return (
       <Portal
         mount={clerk.mountSignUp}
@@ -156,8 +160,8 @@ export const SignUp = withClerk(
  *
  * @see {@link https://clerk.com/docs/components/user/user-button}
  */
-export const UserButton = withClerk(
-  ({ clerk, ...props }: WithClerkProp<UserButtonProps>): JSX.Element => {
+export const UserButton: ClerkUIComponent<UserButtonProps> = withClerk(
+  ({ clerk, ...props }) => {
     return (
       <Portal
         mount={clerk.mountUserButton}
@@ -176,8 +180,8 @@ export const UserButton = withClerk(
  *
  * @see {@link https://clerk.com/docs/components/user/user-profile}
  */
-export const UserProfile = withClerk(
-  ({ clerk, ...props }: WithClerkProp<UserProfileProps>): JSX.Element => {
+export const UserProfile: ClerkUIComponent<UserProfileProps> = withClerk(
+  ({ clerk, ...props }) => {
     return (
       <Portal
         mount={clerk.mountUserProfile}
@@ -196,20 +200,21 @@ export const UserProfile = withClerk(
  *
  * @see {@link https://clerk.com/docs/components/organization/create-organization}
  */
-export const CreateOrganization = withClerk(
-  (
-    { clerk, ...props }: WithClerkProp<CreateOrganizationProps>,
-  ): JSX.Element => {
-    return (
-      <Portal
-        mount={clerk.mountCreateOrganization}
-        unmount={clerk.unmountCreateOrganization}
-        updateProps={(clerk as AnyObject).__unstable__updateProps}
-        props={props}
-      />
-    );
-  },
-);
+export const CreateOrganization: ClerkUIComponent<CreateOrganizationProps> =
+  withClerk(
+    (
+      { clerk, ...props },
+    ) => {
+      return (
+        <Portal
+          mount={clerk.mountCreateOrganization}
+          unmount={clerk.unmountCreateOrganization}
+          updateProps={(clerk as AnyObject).__unstable__updateProps}
+          props={props}
+        />
+      );
+    },
+  );
 
 /**
  * The `<OrganizationProfile />` component is used to render a beautiful,
@@ -218,20 +223,21 @@ export const CreateOrganization = withClerk(
  *
  * @see {@link https://clerk.com/docs/components/organization/organization-profile}
  */
-export const OrganizationProfile = withClerk(
-  (
-    { clerk, ...props }: WithClerkProp<OrganizationProfileProps>,
-  ): JSX.Element => {
-    return (
-      <Portal
-        mount={clerk.mountOrganizationProfile}
-        unmount={clerk.unmountOrganizationProfile}
-        updateProps={(clerk as AnyObject).__unstable__updateProps}
-        props={props}
-      />
-    );
-  },
-);
+export const OrganizationProfile: ClerkUIComponent<OrganizationProfileProps> =
+  withClerk(
+    (
+      { clerk, ...props },
+    ) => {
+      return (
+        <Portal
+          mount={clerk.mountOrganizationProfile}
+          unmount={clerk.unmountOrganizationProfile}
+          updateProps={(clerk as AnyObject).__unstable__updateProps}
+          props={props}
+        />
+      );
+    },
+  );
 
 /**
  * The `<OrganizationSwitcher />` component allows a user to switch between
@@ -239,20 +245,21 @@ export const OrganizationProfile = withClerk(
  *
  * @see {@link https://clerk.com/docs/components/organization/organization-switcher}
  */
-export const OrganizationSwitcher = withClerk(
-  (
-    { clerk, ...props }: WithClerkProp<OrganizationSwitcherProps>,
-  ): JSX.Element => {
-    return (
-      <Portal
-        mount={clerk.mountOrganizationSwitcher}
-        unmount={clerk.unmountOrganizationSwitcher}
-        updateProps={(clerk as AnyObject).__unstable__updateProps}
-        props={props}
-      />
-    );
-  },
-);
+export const OrganizationSwitcher: ClerkUIComponent<OrganizationSwitcherProps> =
+  withClerk(
+    (
+      { clerk, ...props },
+    ) => {
+      return (
+        <Portal
+          mount={clerk.mountOrganizationSwitcher}
+          unmount={clerk.unmountOrganizationSwitcher}
+          updateProps={(clerk as AnyObject).__unstable__updateProps}
+          props={props}
+        />
+      );
+    },
+  );
 
 /**
  * The `<OrganizationList />` component is used to display organization related
@@ -260,21 +267,24 @@ export const OrganizationSwitcher = withClerk(
  *
  * @see {@link https://clerk.com/docs/components/organization/organization-list}
  */
-export const OrganizationList = withClerk(
-  ({ clerk, ...props }: WithClerkProp<OrganizationListProps>) => {
-    return (
-      <Portal
-        mount={clerk.mountOrganizationList}
-        unmount={clerk.unmountOrganizationList}
-        updateProps={(clerk as AnyObject).__unstable__updateProps}
-        props={props}
-      />
-    );
-  },
-);
+export const OrganizationList: ClerkUIComponent<OrganizationListProps> =
+  withClerk(
+    (
+      { clerk, ...props },
+    ): JSX.Element | null => {
+      return (
+        <Portal
+          mount={clerk.mountOrganizationList}
+          unmount={clerk.unmountOrganizationList}
+          updateProps={(clerk as AnyObject).__unstable__updateProps}
+          props={props}
+        />
+      );
+    },
+  );
 
-export const Waitlist = withClerk(
-  ({ clerk, ...props }: WithClerkProp<WaitlistProps>) => {
+export const Waitlist: ClerkUIComponent<WaitlistProps> = withClerk(
+  ({ clerk, ...props }) => {
     return (
       <Portal
         mount={clerk.mountWaitlist}
@@ -292,8 +302,10 @@ export const Waitlist = withClerk(
  *
  * @see {@link https://clerk.com/docs/components/authentication/google-one-tap}
  */
-export const GoogleOneTap = withClerk(
-  ({ clerk, ...props }: WithClerkProp<GoogleOneTapProps>): JSX.Element => {
+export const GoogleOneTap: ClerkUIComponent<GoogleOneTapProps> = withClerk(
+  (
+    { clerk, ...props },
+  ) => {
     return (
       <Portal
         open={clerk.openGoogleOneTap}
