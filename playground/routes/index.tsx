@@ -19,11 +19,11 @@ export default define.page(function Page() {
         </p>
       </div>
       <SignedIn>
-        <a href="/profile">Profile</a>
+        <a href='/profile'>Profile</a>
       </SignedIn>
 
       <SignedOut>
-        <a href="/sign-in">Sign in</a>
+        <a href='/sign-in'>Sign in</a>
       </SignedOut>
     </div>
   );

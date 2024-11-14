@@ -25,7 +25,9 @@ export type {
   ClerkOptions,
   ClientResource,
   CreateOrganizationProps,
+  GoogleOneTapProps,
   InitialState,
+  LoadedClerk,
   OrganizationCustomPermissionKey,
   OrganizationCustomRoleKey,
   OrganizationListProps,
@@ -39,5 +41,6 @@ export type {
   UserButtonProps,
   UserProfileProps,
   UserResource,
+  WaitlistProps,
   Without,
 } from 'npm:@clerk/types@^4.34.0';
