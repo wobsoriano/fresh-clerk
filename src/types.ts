@@ -17,9 +17,6 @@ export interface BrowserClerk extends HeadlessBrowserClerk {
   components: unknown;
 }
 
-export type ButtonProps = {
-  mode?: 'redirect' | 'modal';
-  children?: VNode;
-};
+export type PropsWithChildren<P> = P & { children?: VNode };
 
 export type WithClerkProp<T = unknown> = T & { clerk: LoadedClerk };

@@ -1,27 +1,16 @@
 import { cloneElement, type JSX } from 'preact';
-import { SignUpProps } from '../deps.ts';
+import { SignUpButtonProps, SignUpProps } from '../deps.ts';
 import { useClerkContext } from '../hooks/mod.ts';
-import type { ButtonProps } from '../types.ts';
-
-export type SignUpButtonProps =
-  & {
-    unsafeMetadata?: SignUpUnsafeMetadata;
-  }
-  & ButtonProps
-  & Pick<
-    SignUpProps,
-    | 'fallbackRedirectUrl'
-    | 'forceRedirectUrl'
-    | 'signInForceRedirectUrl'
-    | 'signInFallbackRedirectUrl'
-  >;
+import type { PropsWithChildren } from '../types.ts';
 
 /**
  * The `<SignOutButton>` component is a button that signs a user out.
  *
  * @see {@link https://clerk.com/docs/components/unstyled/sign-out-button}
  */
-export default function SignUpButton(props: SignUpButtonProps): JSX.Element {
+export default function SignUpButton(
+  props: PropsWithChildren<SignUpButtonProps>,
+): JSX.Element {
   const { clerk } = useClerkContext();
   const {
     fallbackRedirectUrl,

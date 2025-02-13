@@ -12,10 +12,7 @@ export default define.page(function App({ Component, state }) {
         <link rel='stylesheet' href='/styles.css' />
       </head>
       <body>
-        <ClerkProvider
-          {...buildClerkProps(state)}
-          publishableKey={Deno.env.get('CLERK_PUBLISHABLE_KEY')!}
-        >
+        <ClerkProvider {...buildClerkProps(state)}>
           <Component />
         </ClerkProvider>
       </body>

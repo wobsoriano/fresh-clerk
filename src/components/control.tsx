@@ -5,7 +5,7 @@ import {
   OrganizationCustomRoleKey,
 } from '../deps.ts';
 import { useClerkContext } from '../hooks/mod.ts';
-import { computed } from '@preact/signals';
+import { useComputed } from '@preact/signals';
 import { JSX } from 'preact';
 
 /**
@@ -19,7 +19,6 @@ export function SignedIn(
   props: { children: ComponentChildren },
 ): JSX.Element {
   const { auth } = useClerkContext();
-
   return auth.value.userId ? <>{props.children}</> : <></>;
 }
 
@@ -62,7 +61,7 @@ export function Protect(
 ): JSX.Element {
   const { auth, session } = useClerkContext();
 
-  const isUnauthorized = computed(() => {
+  const isUnauthorized = useComputed(() => {
     return !auth.value.userId ||
       ((props.role || props.permission) &&
         !session.value!.checkAuthorization(

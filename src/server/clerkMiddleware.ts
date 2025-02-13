@@ -1,7 +1,8 @@
-import { type AuthObject, type MiddlewareOptions } from '../deps.ts';
+import type { AuthObject, MiddlewareOptions } from '../deps.ts';
 import { FreshContext, MiddlewareFn } from 'fresh';
 import { clerkClient } from './clerkClient.ts';
 import * as constants from './constants.ts';
+import { getPublicEnvVariables } from '../utils/getPublicEnvVariables.ts';
 
 export interface State {
   auth: AuthObject;
@@ -34,6 +35,8 @@ export function clerkMiddleware<T>(
     const typedCtx = ctx as FreshContext<State>;
 
     typedCtx.state.auth = auth;
+    // @ts-expect-error hidden from the types as it's a private prop
+    typedCtx.state.__internal_clerk_public_env_vars = getPublicEnvVariables();
 
     const resp = await typedCtx.next();
 
