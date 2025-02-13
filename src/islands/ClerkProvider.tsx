@@ -59,7 +59,7 @@ export default function ClerkProvider(props: ClerkProviderProps): JSX.Element {
   const clerk = useSignal<HeadlessBrowserClerk | BrowserClerk | null>(null);
   const loaded = useSignal(false);
   const resources = useSignal<Resources>({
-    client: undefined as unknown as ClientResource,
+    client: {} as ClientResource,
     session: undefined,
     user: undefined,
     organization: undefined,
