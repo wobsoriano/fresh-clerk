@@ -19,10 +19,15 @@ import { createContext, type JSX } from 'preact';
 import { BrowserClerk, HeadlessBrowserClerk } from '../types.ts';
 import { ComponentChildren } from 'preact';
 import { LoadClerkJsScriptOptions } from '../deps.ts';
+import { Without } from '../deps.ts';
+import { mergeWithPublicEnvVariables } from '../utils/mergeWithPublicEnvVariables.ts';
 
-type ClerkProviderProps = LoadClerkJsScriptOptions & {
-  children?: ComponentChildren;
-};
+type ClerkProviderProps =
+  & Without<LoadClerkJsScriptOptions, 'publishableKey'>
+  & {
+    publishableKey?: string;
+    children?: ComponentChildren;
+  };
 
 export type ClerkContextType = {
   clerk: Signal<HeadlessBrowserClerk | BrowserClerk | null>;
@@ -54,13 +59,13 @@ export default function ClerkProvider(props: ClerkProviderProps): JSX.Element {
   const clerk = useSignal<HeadlessBrowserClerk | BrowserClerk | null>(null);
   const loaded = useSignal(false);
   const resources = useSignal<Resources>({
-    client: {} as ClientResource,
+    client: undefined as unknown as ClientResource,
     session: undefined,
     user: undefined,
     organization: undefined,
   });
-  // @ts-expect-error initialState is hidden from the types as it's a private prop
-  const initialState = props.initialState;
+  // @ts-expect-error hidden from the types as it's a private prop
+  const initialState = props.__internal_clerk_initial_state;
   const auth = useComputed(() =>
     deriveState(loaded.value, resources.value, initialState)
   );
@@ -71,13 +76,23 @@ export default function ClerkProvider(props: ClerkProviderProps): JSX.Element {
 
   useSignalEffect(() => {
     async function loadClerk() {
-      await loadClerkJsScript(props);
-      clerk.value = (globalThis as unknown as {
+      // @ts-expect-error hidden from the types as it's a private prop
+      const publicEnvVars = props.__internal_clerk_public_env_vars;
+      const opts = {
+        ...props,
+        ...mergeWithPublicEnvVariables(props, publicEnvVars || {}),
+      } as LoadClerkJsScriptOptions;
+      await loadClerkJsScript(opts);
+
+      const windowClerk = (globalThis as unknown as {
         Clerk: HeadlessBrowserClerk | BrowserClerk;
       }).Clerk;
-      await clerk.value.load();
+      clerk.value = windowClerk;
+
+      await windowClerk.load();
       loaded.value = true;
-      clerk.value.addListener((payload) => resources.value = payload);
+
+      windowClerk.addListener((payload) => resources.value = payload);
     }
 
     loadClerk();

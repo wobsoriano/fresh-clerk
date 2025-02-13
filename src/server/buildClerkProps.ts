@@ -32,13 +32,18 @@ import type { State } from './clerkMiddleware.ts';
  * }
  */
 export function buildClerkProps<T>(state: FreshContext<T>['state']): {
-  initialState: InitialState;
+  __internal_clerk_initial_state: InitialState;
+  __internal_clerk_public_env_vars: Record<string, string>;
 } {
   const initialState = makeAuthObjectSerializable(
     stripPrivateDataFromObject((state as FreshContext<State>['state']).auth),
   );
 
   return {
-    initialState: JSON.parse(JSON.stringify(initialState)) as InitialState,
+    __internal_clerk_initial_state: JSON.parse(
+      JSON.stringify(initialState),
+    ) as InitialState,
+    // @ts-expect-error hidden from the types as it's a private prop
+    __internal_clerk_public_env_vars: state.__internal_clerk_public_env_vars,
   };
 }

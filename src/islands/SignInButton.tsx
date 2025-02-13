@@ -1,24 +1,16 @@
 import { cloneElement, type JSX } from 'preact';
-import { SignInProps } from '../deps.ts';
+import { SignInButtonProps, SignInProps } from '../deps.ts';
 import { useClerkContext } from '../hooks/mod.ts';
-import type { ButtonProps } from '../types.ts';
-
-export type SignInButtonProps =
-  & ButtonProps
-  & Pick<
-    SignInProps,
-    | 'fallbackRedirectUrl'
-    | 'forceRedirectUrl'
-    | 'signUpForceRedirectUrl'
-    | 'signUpFallbackRedirectUrl'
-  >;
+import type { PropsWithChildren } from '../types.ts';
 
 /**
  * The `<SignInButton>` component is a button that links to the sign-in page or displays the sign-in modal.
  *
  * @see {@link https://clerk.com/docs/components/unstyled/sign-in-button}
  */
-export default function SignInButton(props: SignInButtonProps): JSX.Element {
+export default function SignInButton(
+  props: PropsWithChildren<SignInButtonProps>,
+): JSX.Element {
   const { clerk } = useClerkContext();
   const {
     signUpFallbackRedirectUrl,

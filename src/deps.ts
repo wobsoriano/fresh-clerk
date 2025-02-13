@@ -16,6 +16,10 @@ export {
   type LoadClerkJsScriptOptions,
 } from 'npm:@clerk/shared@^2.21.1';
 
+export {
+  apiUrlFromPublishableKey,
+} from 'npm:@clerk/shared@^2.21.1/apiUrlFromPublishableKey';
+
 export type {
   ActiveSessionResource,
   ActJWTClaim,
@@ -35,8 +39,10 @@ export type {
   OrganizationResource,
   OrganizationSwitcherProps,
   Resources,
+  SignInButtonProps,
   SignInProps,
   SignOutOptions,
+  SignUpButtonProps,
   SignUpProps,
   UserButtonProps,
   UserProfileProps,
