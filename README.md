@@ -3,7 +3,7 @@
 Community package that integrates Clerk with Deno and
 [Fresh](https://fresh.deno.dev/) 🍋
 
-> [!NOTE]  
+> [!NOTE]\
 > This package requires Fresh 2.0
 
 ## Installation

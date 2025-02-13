@@ -1,4 +1,4 @@
-import { type AuthenticateRequestOptions, type AuthObject } from '../deps.ts';
+import { type AuthObject, type MiddlewareOptions } from '../deps.ts';
 import { FreshContext, MiddlewareFn } from 'fresh';
 import { clerkClient } from './clerkClient.ts';
 import * as constants from './constants.ts';
@@ -11,7 +11,7 @@ export interface State {
  * The `clerkMiddleware()` helper integrates Clerk authentication into your Fresh application through Middleware.
  */
 export function clerkMiddleware<T>(
-  options: AuthenticateRequestOptions,
+  options: MiddlewareOptions,
 ): MiddlewareFn<T> {
   return async (ctx) => {
     const requestState = await clerkClient.authenticateRequest(ctx.req, {

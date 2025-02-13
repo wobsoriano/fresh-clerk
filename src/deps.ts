@@ -1,20 +1,20 @@
 export {
   type AuthObject,
   type ClerkClient,
+  type ClerkOptions as MiddlewareOptions,
   createClerkClient,
-} from 'npm:@clerk/backend@^1.16.4';
+} from 'npm:@clerk/backend@^1.24.1';
 
 export {
-  type AuthenticateRequestOptions,
   makeAuthObjectSerializable,
   stripPrivateDataFromObject,
-} from 'npm:@clerk/backend@^1.16.4/internal';
+} from 'npm:@clerk/backend@^1.24.1/internal';
 
 export {
   deriveState,
   loadClerkJsScript,
   type LoadClerkJsScriptOptions,
-} from 'npm:@clerk/shared@^2.14.0';
+} from 'npm:@clerk/shared@^2.21.1';
 
 export type {
   ActiveSessionResource,
@@ -43,4 +43,4 @@ export type {
   UserResource,
   WaitlistProps,
   Without,
-} from 'npm:@clerk/types@^4.34.0';
+} from 'npm:@clerk/types@^4.46.0';

@@ -1,5 +1,5 @@
 import { App } from 'fresh';
-import type { AuthenticateRequestOptions } from './deps.ts';
+import type { MiddlewareOptions } from './deps.ts';
 import { clerkMiddleware, State } from './server/mod.ts';
 import * as clerkIslands from './islands/mod.ts';
 
@@ -11,7 +11,7 @@ export interface ClerkPluginOptions {
    * Clerk authenticate request options
    * @see {@link https://clerk.com/docs/references/backend/authenticate-request#authenticate-request-options authenticateRequest Docs}
    */
-  middlewareOptions?: AuthenticateRequestOptions;
+  middlewareOptions?: MiddlewareOptions;
 }
 
 /**
