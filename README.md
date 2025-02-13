@@ -56,7 +56,6 @@ export default function App({ Component, state }: PageProps<State>) {
       <ClerkProvider
         {/* Build required props for SSR */}
         {...buildClerkProps(state)}
-        publishableKey={Deno.env.get('CLERK_PUBLISHABLE_KEY')}
       >
         <Component />
       </ClerkProvider>
