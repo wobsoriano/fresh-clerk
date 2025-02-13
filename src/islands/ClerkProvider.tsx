@@ -26,7 +26,7 @@ type ClerkProviderProps =
   & Without<LoadClerkJsScriptOptions, 'publishableKey'>
   & {
     publishableKey?: string;
-    children?: ComponentChildren;
+    children: ComponentChildren;
   };
 
 export type ClerkContextType = {
