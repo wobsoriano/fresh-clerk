@@ -11,7 +11,9 @@ export type RouteMatcherParam = PathMatcherParam;
  * Path patterns and regular expressions are supported, for example: `['/foo', '/bar(.*)'] or `[/^\/foo\/.*$/]`
  * For more information, see: https://clerk.com/docs
  */
-export const createRouteMatcher = (routes: RouteMatcherParam) => {
+export const createRouteMatcher = (
+  routes: RouteMatcherParam,
+): (context: FreshContext) => boolean => {
   const matcher = createPathMatcher(routes);
   return (context: FreshContext) => {
     return matcher(context.url.pathname);
