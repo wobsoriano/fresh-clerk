@@ -1,5 +1,5 @@
 import { ClerkClient, createClerkClient } from '../deps.ts';
-import { API_URL, API_VERSION, JWT_KEY, SECRET_KEY } from './constants.ts';
+import { API_URL, API_VERSION, JWT_KEY, PUBLISHABLE_KEY, SECRET_KEY } from './constants.ts';
 
 /**
  * Clerk JavaScript Backend SDK client instance
@@ -7,6 +7,7 @@ import { API_URL, API_VERSION, JWT_KEY, SECRET_KEY } from './constants.ts';
  * @see {@link https://clerk.com/docs/references/backend/overview JavaScript Backend SDK}
  */
 export const clerkClient: ClerkClient = createClerkClient({
+  publishableKey: PUBLISHABLE_KEY,
   secretKey: SECRET_KEY,
   apiUrl: API_URL,
   apiVersion: API_VERSION,

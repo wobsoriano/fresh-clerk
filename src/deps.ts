@@ -20,6 +20,11 @@ export {
   apiUrlFromPublishableKey,
 } from 'npm:@clerk/shared@^2.21.1/apiUrlFromPublishableKey';
 
+export {
+  createPathMatcher,
+  type PathMatcherParam,
+} from 'npm:@clerk/shared@^2.21.1/pathMatcher';
+
 export type {
   ActiveSessionResource,
   ActJWTClaim,
