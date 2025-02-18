@@ -76,11 +76,20 @@ export default function ClerkProvider(props: ClerkProviderProps): JSX.Element {
 
   useSignalEffect(() => {
     async function loadClerk() {
-      // @ts-expect-error hidden from the types as it's a private prop
-      const publicEnvVars = props.__internal_clerk_public_env_vars;
+      const {
+        children: _children,
+        // @ts-expect-error hidden from the types as it's a private prop
+        __internal_clerk_initial_state,
+        // @ts-expect-error hidden from the types as it's a private prop
+        __internal_clerk_public_env_vars: publicEnvVars = {},
+        ...rest
+      } = props;
       const opts = {
-        ...props,
-        ...mergeWithPublicEnvVariables(props, publicEnvVars || {}),
+        ...rest,
+        ...mergeWithPublicEnvVariables(
+          props,
+          publicEnvVars || {},
+        ),
       } as LoadClerkJsScriptOptions;
       await loadClerkJsScript(opts);
 
@@ -89,7 +98,7 @@ export default function ClerkProvider(props: ClerkProviderProps): JSX.Element {
       }).Clerk;
       clerk.value = windowClerk;
 
-      await windowClerk.load();
+      await windowClerk.load(opts);
       loaded.value = true;
 
       windowClerk.addListener((payload) => resources.value = payload);
