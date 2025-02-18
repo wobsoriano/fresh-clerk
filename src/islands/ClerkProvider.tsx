@@ -88,7 +88,7 @@ export default function ClerkProvider(props: ClerkProviderProps): JSX.Element {
         ...rest,
         ...mergeWithPublicEnvVariables(
           props,
-          publicEnvVars || {},
+          publicEnvVars,
         ),
       } as LoadClerkJsScriptOptions;
       await loadClerkJsScript(opts);
